@@ -6,16 +6,6 @@
 	box-sizing: border-box;
 }
 
-.hbe-container{
-	margin: 0 auto;
-	overflow: hidden;
-}
-.hbe-content {
-	text-align: center;
-	font-size: 150%;
-	padding: 1em 0;
-}
-
 .hbe-input {
 	position: relative;
 	z-index: 1;
