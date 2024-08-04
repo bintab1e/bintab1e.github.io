@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang=ko>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dreamhack xss-2">
+<meta property="og:url" content="http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/index.html">
+<meta property="og:site_name" content="bintab1e">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2024-08-04T12:07:21.000Z">
+<meta property="article:modified_time" content="2024-08-04T12:13:45.991Z">
+<meta property="article:author" content="bintab1e">
+<meta property="article:tag" content="Dreamhack-web">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/logo.png">
+        
+      
+      
+      
+    
+    <!-- title -->
+    <title>Dreamhack xss-2</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/08/04/Dreamhack-mongoboard/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/&text=Dreamhack xss-2"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/&title=Dreamhack xss-2"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/&is_video=false&description=Dreamhack xss-2"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Dreamhack xss-2&body=Check out this article: http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/&title=Dreamhack xss-2"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/&title=Dreamhack xss-2"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/&title=Dreamhack xss-2"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/&title=Dreamhack xss-2"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/&name=Dreamhack xss-2&description=Here&#39;s something encrypted, password is required to continue reading."><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/&t=Dreamhack xss-2"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Dreamhack xss-2
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">bintab1e</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-08-04T12:07:21.000Z" class="dt-published" itemprop="datePublished">2024-08-04</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Dreamhack-web/" rel="tag">Dreamhack-web</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="0cd8219f6ff572abb4fe47dc695d571de4f81ca903793a72354f71aa0a0bbf43">7c32bb0b48fca3fd0f326eefdb8ea21b2089bc2d12b9c4ff550653d8aea41991caac12aabcd44c4045345b0cb7471a3c87d55ebc8ed58f08507ed408b550f1c2d5854e53f89aa2a22dfed868109737816ba1c31e6e91d3844ecb1eb7b6dca2739d1cb96c459604ff6c577a6e5e68fbd52f346860f23b25df7ddea78cb4175071e343b45303fc404896ee009b3e01f2840d4012c8176d5fa4fcbd24b60aa87e1654ea56b5bfc1f8693e882f554c6e78f0c9c642d862a6cfc9d9e6f634ee3e2a0ac49ec661a8f371fb7770fc6f2774d3e7cb6c5d7fe9998b240db357f82419ad53e44a9e2cb1e695ebc517a1543a1b7fd1f0b59dffe0c6a706f6975c390c3449d099a2e88c592f80ba56acd55d187b9ce163ed48dd33ca8917446291ecdf718dd71c498beab2b13844abd5cb04f18480b7b9a182df50d9da9a4cd8afb8a676c9ffd672a5035498bb156aac2c2c2f5bed2d81254ff62bc04f78ff272b9cca9b350e0dff1d4b0cd5d5ae440b7a39e41b0886cf427b9d33f8ba47ac4e650e54de24456e532e216ad39084f4254ecd7f1e6d65e601da43152900b59cf07d72e8b46d4d52b8b18b54c1e6ebbdab123805d1804b923773252681da0a96ac1ace9a373301d9c695fb99d6b6a7c85f481d4440b2297e9f04cee6bcb786f362a440e67b1d0c6e967778a10ebdd4e5f359a20868d51524666772ba18643b9e84e6500f86da9c777fea607f9f5ef0a1c1da17cfe8081acee8a3fdf6be38eb7e6e65da959314452656739347f31a417e2c653ac03c7efccd01dc1cc438ba47d7d95f8dd55541f498eda8c910a8600fa7694c194a4696698c2fc8abdd1fab827cf91f9d348360033aad252f7405f3cfe31cda572df0b285bd019e75483553bb14e9ab33f41e9b4f8f379ba85eb6fb2e9d5d1691cdc71abf0c01578d6a5f2881c9d875006e7aeb1867bc8b6c707a2146813116df5627b606fbff61894e9f8ce993354702b3d76ef706e36ad9de8df3b55e1a1aa868dfacda20562c99ac9eba1b699a1e3a8eeeba0217dea73a16f745a8545b4ed875bcd0e079f3f9f1527eb4b509b111077124938ede812e66bdeb25faec83b74b81b14125abcb2fca84b54001634aa8a3fd5a0e929d0df1441b3e0af61379853f0c51d0f22465513edd8e36c3ac94efb7fc69972148b8309ef00357c2f83cfdc91414a00f2041fd7aee2de7fa86a2733c38acf5bd0cb344ef8020001df029f148f1867fe0b505beedd7e57b6c802320d820cb06640a304ed4865ad85c3df81703670a8e2b2644cf24bcee25ebdb7550e29589f8ce9b112addd344df7c9c1a5db689d180b4e0550075c761600d8129496934be6af84d9af604a656b371e1a134d3b9204e4eec6cee4765604c6671d85bbc6469f1fa7779af2af12756d76651de85fa7fe4394b5d6fa67c61813993bc574a17f619a41f558703c1a95e3bfada5a6a414f2407d5b7379119a05c0b8c53152bae9da5ba4ae3a76c2ec0b19944989add42d0f981d9ca913612e4335b33b49719c9dca6c2deedbb712ac5a9947999b51908815191d7c7f85f1ef83f56789a238641aaae515a2ea52881c68e12a02aa4f4e59bf96c718b5ad2d8a03329d5ffaf56913da9e6bfe2c467fcf2c9859510cc01be2ee7f9b43df7e0fd61e7dcc100dcb3f0f54837b5a29ad97692876c8c4c111427387c248e3c4b86eb9c397a6245bb2df180454cabbe56ddc9ff3d540396152541ec091a0a37d63f89d7436675695563999832cf47fb05f2285edab78571745447636ad5febf6b0a1904a2969d0782af1d5c36ade7a0b216e1c8a338f2f712f5a5609d09ce0662a7ac0cb12ca44261269ec1d82a268c16ecd2e6fd2a1287ecb7a5dd9fb04f26456831c2e00943530f9bc030c88c8109d6aabe567fb974d8d0e330caa19cce5e98510feff0eb1e36b7ef176ba86cb9da74f774c95df0b64d13ca362c3a7dfb41feed2e55f17e72007da2b9940c9e19848bd8d1dba30c99f9b78d78831eef1fd646520561786816834fe4c9e8600bf9a7b443cc44e615336236447e3d490089b175171cc89daacc042166571352192557bbbf02aedadeca9c7fb7f9eda0c6bc5b7c0f381a23bcf5f0cff0350b8a4bbf5ac4d560a77fc8917c37b30d399537447829f5732d08b9defddfe8271d8e13761f559f7507eae148ec3fd1e67e23e0d58fffb6b28d1982fdf21312c62ad9530417823a89e68b59d9c63964bdb03f449ba4f2a25a6188dc81def7fb37afb552647c26f456b7425c40a213b228505447a03b67eab9b1f4e5a2d0a38f6759b00cc1f8ae9dca9385d6c9fb8665c53423e638cf672401a45b471899f183be372f46693207200970a9f247551553f45a76d62037d95aa8088a616889cdf4a9867351839112fbca677d16baa11cd91e8c32ffd9fb2b21d78d818db1aa78d47bcaf45b778e8d2b0072570477d27ce5354951881b7ecf2d5fa02252843d69146c0fc21a1218d0ad5bdc2c155fd4105edc835c8234bea67a70d4cf83a76f75bd3aaa314a50918c6527f0a79ae55f05be9869180600f439a47f63675cf76d695c15cbe190065c830b3cf121e4e9c640324e376bdcecefa905ef7f1a8e2dcc156eceb89450b762f552b328e02736d173bace2bca2eec9c7b6692ae8150e57e16f53f7108252e1d636853951f8f3b578102d25342629acee776d6c79a384ac1f72bc311ab59e5720e29dc1024b6eb48c544886950d15d68bd64158c953a878099bd3c3d00bb55d19405911ac6f0c11dba6853602e961f29f51f3692a2556e1aafe1f08f8a2b4c6c040e5b30b71a2f2ff448d630dfbdac0366a5a6d0bcfd5f4a9feecc7ee6b092896043f9e1449eb59abe3ece787543052514ecb24b6bd14e098cd929c75b39cb3f57cd3de1c83be8d20be1185f3fe9069553c4c57fae94ca96c0bba8e60956316926ea3a9b533545810f9f54816beb4b74fe11f25ca0f778ec1ae3dd3a590235bac393f0bb80f87639f5f7864c62f545bc3d01c363dce69f44295dfa07abda3593d590c0aa22b8b4b27af8f607e9eb514b00fe9344de79c83ae66cca88c7983f5020e6a1e3c3530b8d9c5151c0cfb6ea47150d3f554541f282a4e33aa4ba89c6c929d68b58715b497fdbec57b239111145b4d1ba6586fac2a6d2f7c3c60d2ded3d89542cdf2e1bbce8efd3d3d5ca16ef78549ce7f3f7514a711c3c774d9193f530cd62871506f9dddbfb729ca9b741d8426512f667176fe753d257b01542bcb35d17cdbfd223cfc554810925731cf3a8b3721911162fa1ce58fa761b796b8a7e0b7c7bcf1f9f666da9fe351d7cbefacaaf323352ffe0cd580498a72ae38987d07e191ccd2e3aacc75e772daa9a26d66aa013ac482a3765f7544c2fe055fc0ef758ef43481b36f2c0d262cffcce1636b5557299d87c61535b31a941b8bf10ff20f7d8339930efd6840ab00705526885463823c9b0d11083a17a7d609bbe7d4f01b0cc0c6b3e3eaa754b2e633d8c7ab02d55c394ae7ab5909fc48c1237429781904964e27c142a0c960770af6d870ee29f5c31b4aab72cb19d5f46cd21a103d7f3c3766ca24926a8464b12da3e72cd4b597f481cc9dd6403e8eaf7fc5e3f516f8c7af9b141caa819b2c538b297f3ed29c67939de308c1e6c166108610376bef71e721be263ebeb4bf1cbe34d39592f6b1431441a6d3b6d07c62b000df847d76d7ad6720e649553087d200c6ce4625f4d3798334d4be10beedb7a7dff3d3e0b6fef42de8f4caa226d83a53e9c88d170e4e6043e873b6b272638530232297c8aaab0de01fb3040f61e7b303e9a3737fd70dd01404772a5b3d7e3dd80e9b31d23594915fc0aa2e9680f49616c03b70a19795cef4421c0ccf37732bc1bc0e51c6f18c94027ecef20d10260e1a02214c3a988216c97af03c877a09d2fc2af5bf875a2fcfc58de53b93f16e465fc156bd94adf62fba11169107a2edeceb348334068222e0b5290b4d7490e9624c188d68ea62ad67ee3dc3ea09eb84ddd2cda6fa74493316e602d3c326cff841814c3bd0d3a07d241a7d5c71107060de49c5367b4c80f478f8952d23c635ee53c09206eeeac3a895c4029a5f10d04e1848cd2ecd5f82c91ca54288989d392d221c036cce7db093cc2c29c173f5e072bc29892d8e663bf79418dc905e99d574ff0bcc9c5b362eb17f5b7723b10405a095351648f2f532fa3346caa964f4548ddfdff69721c71129efae1de73b6850aa5226dbd062bd1dab2f2354f2c6f2021a370d03557916a6bb966dcdabba08cad19c53e780bedf7eb2fa24aa836aad522defeb2896a559d7bd3f25c4d4cecaf183fb095a7501799cbda1c51d0665cd070750b42fa136af21e892abbc4ff4945b25936ffdf732f1c2f4f01dc0c541b90aaf74e3aa1a652bfa68d1afa3712805745d4a39e37aeffa75bc6533cf03324399fa2a16ed178d742fad11757108ba9b50698ffb2f05df30907d6a941986652c424c89eb6d1245f8a93cd49bcc24e1a6be8aba92c196fbd71087a37bcbcda68528a81d19405787603188a67119c4874f062f6f67bcf80649dcc8522d189d653940f1fba112c7a1721a0ee8341de22296c815f05dd7a7e9f6b1f12deb0b954ec390fcec4bc0e0e6a208de3ea317124ba84489ab87614cfcc69c43770eef5a9f48ec48296302d02e74ed4b87d1eadc41e92d58e6effc499b5aa62cf229d47f4e696cbd966c1b2ad3aee33902ae705dfbcd64852e2f54875b15755a493f75621c3b695ba8c95c83cf46d1bda261d7d2b00ca4f299e86bb95637b4cfb3fe13b7ec10e89c2365b4e6da87262da4cfa999bc152a8e7631d83c0c50e7b060af67844a2f3d9841f7f544c12b6994475030d322e50bafdf18a1319e01213b3424de1dbbf30616f1df0ecddf31783a748001d3e114652d9d9b60982d1f50dbf9bb26d8f39d50d49305dc1c167efbe178537d5a9fbcc8b824faa646f9dfbba29cb491f5d801116276e0c5f4a1007e8a2b1b5edbcaca759157a4e3a4b43e1999fd1a85f7b28919bcd3a13746b2901dbc3c7494961e10540459bf3ef7f039ea747f5615959bcbd49b1c9e71eede07aa8548eb517eed972aab778727ec06150c83a0e65c79e0f874f0a02c23582ddd1747ea4bbb1bfbe3a7b451d5faf053650b62a026e2639313239b1fc04b6cfadcf8a3f0cce4dfecf89fd674128e0b9790a5b299837989c88e849d82aeacd13f9e2f848c1c7838299b78b8e5719eec2354a149147439945d2356f97a7d793911100e1cdb2b4f431850da07e2505eeb33caea9383d3c24058e4de266f9bfeb937e1b3794da61938204fc617bed08934a5a50e93a38d97fa9599bb540bf3eb76f6d0e7140914cf7a43fb89c52b36a3b1c3ed9893a65613d7bcf9844778b8a9c29aad304bd4fd2c79049131775140cfafc0383a851f9a660a6f17be9520b8740c6de6eb96df8da2dc0f679e1b9576b69796e332b4a4fa9be8034cf684d2659ac5bc29d71e442af3b53a7f83d18f104a96b1589adb9c31969ecd978440a04e6a88de80bc95c1a889be4d1dbfd2045c207c3f96b943ed0b51f95f84d8d41bc4804cdd5c5041923a01d0f293c321ffdc30ea795c86951a7e92c43f96bfdb5f4fa90ad9c9cb0dfa898496fffd099197c440c42df39c4</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/style.css" rel="stylesheet" type="text/css">
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/&text=Dreamhack xss-2"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/&title=Dreamhack xss-2"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/&is_video=false&description=Dreamhack xss-2"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Dreamhack xss-2&body=Check out this article: http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/&title=Dreamhack xss-2"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/&title=Dreamhack xss-2"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/&title=Dreamhack xss-2"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/&title=Dreamhack xss-2"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/&name=Dreamhack xss-2&description=Here&#39;s something encrypted, password is required to continue reading."><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://bintab1e.github.io/2024/08/04/Dreamhack-xss-2/&t=Dreamhack xss-2"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    bintab1e
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
