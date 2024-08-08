@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang=ko>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dreamhack-type-confusion">
+<meta property="og:url" content="http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/index.html">
+<meta property="og:site_name" content="bintab1e">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2024-08-08T11:51:25.000Z">
+<meta property="article:modified_time" content="2024-08-08T12:06:16.889Z">
+<meta property="article:author" content="bintab1e">
+<meta property="article:tag" content="Dreamhack-web">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/logo.png">
+        
+      
+      
+      
+    
+    <!-- title -->
+    <title>Dreamhack-type-confusion</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/08/05/n00bzCTF-2024-writeup/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/&text=Dreamhack-type-confusion"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/&title=Dreamhack-type-confusion"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/&is_video=false&description=Dreamhack-type-confusion"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Dreamhack-type-confusion&body=Check out this article: http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/&title=Dreamhack-type-confusion"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/&title=Dreamhack-type-confusion"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/&title=Dreamhack-type-confusion"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/&title=Dreamhack-type-confusion"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/&name=Dreamhack-type-confusion&description=Here&#39;s something encrypted, password is required to continue reading."><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/&t=Dreamhack-type-confusion"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Dreamhack-type-confusion
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">bintab1e</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-08-08T11:51:25.000Z" class="dt-published" itemprop="datePublished">2024-08-08</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Dreamhack-web/" rel="tag">Dreamhack-web</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="7c1ef0f3ccde295a424cec155fed99e7d5082b76b10028ff7312ad6ef9e51648">7c32bb0b48fca3fd0f326eefdb8ea21b2089bc2d12b9c4ff550653d8aea41991caac12aabcd44c4045345b0cb7471a3c87d55ebc8ed58f08507ed408b550f1c2d5854e53f89aa2a22dfed868109737816ba1c31e6e91d3844ecb1eb7b6dca2739d1cb96c459604ff6c577a6e5e68fbd52f346860f23b25df7ddea78cb417507136c1f4adcfd74c9369055f0e506ec1a7b810e073af6662d4bad5f0f279a483ac97f3d378fe0b15652e2f241683732b7e570bbc945cd2222457e3dea4f981fda139d738b2d73c0d0eaae51cc9b649ee3337c1f6287054497a1c64d7b412296d8fe80c7f29d0f9ec343c8e4cc32eaea12450cfb6d1d92ab114896c76c0040ea84f5e0d3bc41c32912e1967a8915d2f7278be9f68c09d776ea9ea0c8fedc60af25fa973bba9d8a8ef4bab3d39352020f1e92fd15e95607b3badc8cd8432ca184f34c194381c8dd171def1135d07bb539481e2dc34ef4e20531423c562b2e13a3e7ae70a0e2b20ecb91afd300170b964f28989e47bd0a736259d1f3e79d774c0a48297871cfbd409a253da27b27893652c42f1f2ef4ac30d29315c51021b4f3f8629734c7636dbab2ca7f53b8b11e76aa9c71c98560672cdf1e306b701c625d55e7fb6fecb341c36d2191bf9a64eb346add6ff4f93daeb16c83ac79bfea9c38cb99ba8107dd8a29d18d78ca0553275d06f27c055e0e0ba7d967dfbe60bb4b4e0dca5fabf8c71bb52c2c18e37bb530079e260d9c49cee9076f1edc1f345a2ba3bb22c0498291875a677bc134273a42f90c2e186eff1ea1c0bea7ce950027fb8ff1629f7eee27bb068c19d93ff578ca43079bff09ad3925a672efbfb1bc56cdab0871d3a36e4e1d3c794a02250bacdd23e55ae4f7bed9c0876abecd888474c7d0910c712da2e528d53b00f3a9efc8c8027346c16df6848fdde0634fae1129d7f0ebb01cc1a7099108b0258c2fcffe73af0861f921bcef6d6e7bcd6199bf9de0e0dc4b7f8adcd29a109f063b68f8fc6d0f5ff11019d40a75bcb8d5e6077e807164468521bcfb18f834ba493ca1c3b109478f65ee4bc971fb9acc8b42621b236475a7afd62db81b74d91aa0ebcb3359e1684c0513b164246d3b492b9d6c47bdc7df09f94707fa8a8fbabe4ef76a05bdbd6f88487f251626ba6955a8a4aff02fe18cb374a69d274b34736aea9d60c45883ff561b5864b170f8630fff0d35394dc57ea66ce46e6d1b81f899a51fe33ee3260596145eb1ec849323ab6fa9b85f2b9ddfaee7392de16d7e9d380e8f02aaf4b55edb0783d568942ff66c96ff89d8bb0bc2335d63659610e5dc02031aa0ed2c5f6cc5a7af1527d2714a1072b4f0d9f2a40f5165e2e1ed42ccc97e942586eeec756e64b90bc240f2fd14f6a18a6830ba77eb5c1e5bedc0ff60360fee8835570567bbe4b084588fddce6d7656d820a2d0ec918bdd11db66a2d154aeed4f71d7a204bd0a0846bcc351d9f7603e71295292301bbb2aa72684cb714c8a5ca3083e898c3a1f867d6c618c8c8bb8f4c0b548090cef8af67a2738c6484a344ae9ec09786fa5156c2dc11eb3e42fdaf0aba177c95fd20021aec322f08eb4c0eec2d6cb02e175c275ae901c39a27c0ea6b1de0069aaf0a63c1d6a266db0cf221a5e8688df5a7d0f2099d991808d3fa47463665c6c4275d3af760151fbd1e8c8468cd090cf64b285c52965d3269c5e7eaeac5f50b17161a3621835d823b64050670ce9d37040fe2029fbaa20a518c2edc6e687aea40cf3bc72a75e370fe2e75496f247db97846acd71c556986c7e0258d6684ee354b7b81e7824ff181b3a8cdc5661f63b1bb3749310f5be4a8ff27bd0b4ed711b9fbd7ca31c92cacd8e732d9a6d0f39398a2249108864c3d8bd071e3da137fdd695f9e9445e0f4ad9e7606b2aaf9621b6ed86ae33af58d150dde3742bd4ac42dbd75872b671d2647fa8a41d43f47d94b4b96ae9a92cbe7f4c635dbc8cdebe844880daea44e4f391ac70fb2b2061e9d95100d144c63978a0cd61a38f40536c784c220761612371d594e32b8de88cca4b275e7d75a0caa59843433b8faed095c6bb096767b274031f2fb4a6caf49ef20ec886a79edb80371857e29cfe23fc4f607fd69ae4e8bc94f8de8155ef25780ed925032f370f4b45f758aaf51f8da8b6a1c3155f57dd3bd9738494cf1ea80b2e80dc8df9bf0eb62e0dd0240b56685ccc0d9403791a19d6e29589d4afafe8a807d40f35c405bfd569d007d0a582428a6acee4fd3b170bfd4309c12fded0008e00b357df935e731bb6f40814a49ad8486f44df760bab1ef66bb6371de3cc843c1660637c371387176b920d055cbc686d1f2687d7740ab2d41d31bb6fbf09cf15641e21f44766be29245997bb84bb653b7ecd283177685b99307c4035a67d3f3137ce71e4e8dfbc11a18219f9c3383e91cd561405ea44fefd0a03d7ed18932b16a30fa47137f738837e703ed20fcace0a90771b44182b0929d0aa3e9d93b24c699e7a383db18cb07c90f3f9c5922ce20ddd28566cc136eff4875dadc0b3dd1f66b4cebf6aaf6af8e816c769aebab278c6c1dad2048add1a0532c81fa565d9ed3cfbb1af6b1dc5961eda3e2102618eadfedc9098e9be47b078ac7e505469dcda75b445c4e1d1e15902db7f54b22870273112a93958db8d25255354df4bc84b20e4f3776fcfcc5143e6eaa7d1d2c7644457b61164d2dd9dac0cf664b1af5f3ba2075090840cb7e3947378f3d2372efd9998cecb7eed212eedc9c46ac59be3e6b10c4bb0ea8956d1e3d4c297ad712b413d09f56babcf369efa132fb02ebec054e2444e81eccad5d44eee37da8a5963cd3bbb861f619a0144e911eb95bf35a3da62c380e58554ede4ed3c9e5d4b766636c7844e9ddf7dd96beb1bc32520fed7822198fd79d0b901eda97bbafba352350a6d6d45aa4b9d050a5c0b9e2dd6b1f73e3947613bf1122e7a35e7e4f3d541814a0ffa903823f985718939693da0678c26bc71a7fced9693e92cd67c05ef9f19efe6aec9900dc9b5f2b79f3e137f1a68cf1d42a60779f3d187cfee8126e4f6f7f9580ac2b32c5279618a1c0e3810bd774fde587cb4744b508de6b106a9bfb5c0b7fb37ca2b23323e6276a3d94bf7acbab86ad6c7bda85e50ca92139c554701ec41bd1713b6baca8143d5bea0597cc65ae93648b0c9b1215b0cb606afd783f8ccb10710d846b7639691459bda50e8b5b9f868d66b7714c8cf1de80fe4d6a8725af6f257170e1e59e60fd1cae4d2e88b400d0a630e79c2172a0c6c0e352dfa98e5fb32955403165813fc4809bf947689fb4b5aa7365f95a1f6620116042382d1d358044ee0c56c2943243350182d15134e62c71ed488a2130b103e808e63020060fa116469f8682a19151bf98c91087842eb49c2cdba57a9faadec76d67aeea5b75bfae185ac0b815a74f34270ab52cec3c2a5245f24af0de04ab2808eef7fa996882e2d98e169d1ef54ebdd45f3ed3868ab97ef9c465bffad254f21cdb8cde88a44a11ae78fbca797a4825155e45babb9c20b44601becb2479d5a6ad825b08bd050c7e8899908b198a3b5928fe4bddad2d42ef83d709ba0842a3296c974320fecadbb059f29477dc9d476f2603ddc44942c1e6240c9f33b50e6e338380a1952a811f0277e107bb55300f1c5bfb4e6a006891912db00f2c8013184f2236a3837792137aa04e55bb8a0be14c019b0e31c82f5e57a1f156fa3f220c2b6d0b64ec2c228304d8e9b0087192c7ce6b20bed213ce6676ba2b98ad97a7c4d738bb4d858efabc4126b181379d91c9d39410918761cb1abe29264872d1d4d899b419f9c2b0b282cbb70ea3916911c0a53cd3e574d8444a978b25c081f10c19e68be84b8feb4f4a521245811f272212807466ceaebef09b06ba10778b7f73289892fa7779ddf87ab52c531abd1c8b460c58bd4bd1725f49e265c23a71365f92808e06c41f2797434f244eb993d42b6cfdd1eaf17425a4dcd6f17106fa22522f7de74cabcde69fed4ca233093c59c7615893223a30a9cbb8d64f0653900a47dfa18546cb4b46de7e344cda534ca2cd3ce613fd80d3418489a6e94e81ea6ea8a74969d2fc17dbe8afe147e8a8009d57e834bd210eda61e42996fdd01b5aa71d7ae538f0b8ef95b1ec6d1c39f81c892ef5e4c0285c84e6093290362d43d10a74a76b143ce67af66afe3743e9b49f839221b79be10bb46ea5fbbdda01f59eac91db8cb20f63baf8afb4f606cf57c0272135188058b066dcb56c50dc063a5440d2b27e93fad0727a9164dd67cd1653d09ba2bb7641b2ab9dfe5a789833fb6ba7be954392c5d0d226b83297faf2a299abaf28189b2c7e3633e685628589f36ad44b8db29b7f1c6bb9738d5571ee373d3efed86a090b64fccc3c13b3697f1c358e863c69ed79d347e361a90c713f38f05e3d544f036ae8224344b77d9e49e5fbbe8832e8977b04aa25359d1a3b7c655da02584897b81235cab44af2fb5022727583c37c4cc4c2f557c6390cfeb277514c69225103a6309275d9a60c6b9230a3e97e44e049ab8c36f08f235d28080d991516afa3d9e7177d3285badf2f9368f7619922f4d53f8f4e06b2bdb299514ae28dbf4e599494aae755ffdcfac8fa81f070937f1b327a8a1ed5f9e781ed4700e52614dfba239148d199310b78683880b9f16ecc117b86df0272164291793de91bdae19efc1e628ddee1f39789f7acc0dbe39bfa3cdbf3bc06ce0853a8f8c38dc44f07448ed3f38d5d46f6318717e1a62a90addf854590b3b6a4c2b941a2837e4e2f3fb209527c8056a32456fc351db2c0e51ad39658abf364fac2e5820e765ef54b0d0858aad057af64c06d8043b6f7c9f6fee69e9ebf95bc989efcc7099ab63230369e7f81d1fb2cf0e90a8210903b9c0b53cea6b2c842997ece981f9815c442934aff7b13514f70ee0021d686db82e9756234154befc37c32666b88d49c7a67cff946cd2f6545105be8e75209823c15d90a813dcb9e044bfe2e511477c7b28c9b724b6732e8e9e2f26195d28ad9bb46d2442a1846cb8b4d1ef4a0e27d75ff4468fc0a526e35d67da28d6c5dd434e30890a19e4691c9e2bff9f8d6f10acfdb0ecfb295853e9df6bde0963609b6ba68c489e4196e06e08d35fbe795de5e2cfdb9ab11fc68ce411ffc2af0f4bf64eac6bee5a6fd903e40c93d372bafb7839611bf3e84feb1a1f5c323e6dc5ffe07e7e10f53ab857ad7deb7785fbc7ef9ac104d0090a2b80315dd4ca05fb2306a7e81a1fbbb0bdd865c4959588e99158a7f71109b02f6926f6eac822578f6136b3f0163c184ab6295e0792fcc811943d2b7985d3cb468c058b394252de85cd5a792d47aa642b1f78667faadb68cfec162d7b752cec2f8650a75246e3dfb182dd872c0a2e20b495b711c4303c3a7dfe2873bc862e6ac5e7a7ad4f99d0a5230c002aec7779f8e7243bdc1cb9ce8a7c1493fa60b9c97d9e42b0f5489e378a05c3dce462452f16ff858d577b017381eb0774f911993a0dbc9e9c6e1ff88b2b6f977c6413e3e4b5404f318b37e5b8c23f4a4a0a5bd50e2a7e86d2f11630c8cd582525313fbdf3ddf3e8b89e468065894c495e1ea528427de6c87e798215e5dd4585e13cef01ccdde7ad5058a7ba0eb3ba5f8b1b6b2fb5c26f9a6afc2f6eb811cf087f8a8c594810fb7ccb1d52b679b35d32663b2da668f0050a4883ec48c63929b648f5d6e5377d569b8a903f352d17489bdc02257d6ccafcbc0b2dda6300fffee11bf6b8e6802e4cebe4c350e31cd809551806af71cb1433af4cd45580e697ae6603049ad018962490532bb9296481c9517605fc6d7ecbbad39c13c6be6b835a657e15776ca7390a5eaa27b085244aa34e705861058c3d35acfcaf554d4dd95fe7519ccfce4e87e60a91108635ed4ba74330b0cd098fc0395b7932b675446a6f546173cafa2436286197423d7ed7557375527253fb007de7b7dddc80d60ee236e514e40de5b13a97b93f200dbd3ae907282543e68a0ddc217acf77aace86457ddf1601f7452d7ccb92847965654feb9b0631e89c57c367aeedcf2b4fd6a86a7fc1915728749d808a931c3bb8b152a1142f1db77be32313096d1474a1419730b3bfb09336358124fa41e583b18e738a543cca17cc0d76dc0231fa718c6fb0bf9ccf0414eeffe3af47a1a006f94fcf9d3b91f7d6105a8cec8662ea8a9e11ec4ae2bc92559df5aff11bd044b6940c74bc73d73e2b7ca5881b465b0b1d845de67097fdcf5122617bf0ea6ffd480fef3fcaa7d36a26b8eae0c1c19013316a8282c48251da4054c178ca4fbc109c006dd11568e8a1fb0dacc8a0d5b9cc117568a1c38a5e77c11dfe9ea903261274433685d14e1103cf78ab2e7f2f509ceaf0f9342a1a1f5051244a77c7ce76e9ca94ae7b85dc7d8d90c8d445edd2bb10a29966b4276436500a474fc62e48728bc0cb298dc6035f648cfc1673a4b1d9227dfe666a5ebd1a4298c1092418eaf63e6d91ae9ecaa5c87e9c0b809a969dc2c7aa104e5ee10bb105283eef771117521a2b2086c18eeeb89bd22e0a7446cd5a33cfaffd177d24e5e7f3f805e4fa7bed40003b6f9077aefd995338b10285a32f087685efe6354e138183a97165ef2d8dc73e20e28f935746c724f4eff9c2f2d473fe673fe41ebc1a57bb959acd95ff263b701f0f22d7409a1a9c939d6d23c9e36e376e38bddbd694c880040f04b42e13379a6bcf1b1e4713ca169dcab5f64a57d50f6dc0cebc30cdec534e735e6d4de9e896c03eebcdbba12b4bc569f19e0bb218c9bfda53f12d07ade824bff18abbd41ca3c5bb889a7ceed8d8fae1aa2292d1fd62c13bf3cc240b2ac614ee54ab75a03e6022040440a30dc1c96f416f3ff3ac1ad5f3dfc4160563dcd06e9049516285ae6842a6ccd73ab7d7c137c434dbcc6e6f0242d104bc3dfd3a120e8caff3f284858fdd45c55c41e0e7c178bb514ce66b023f8ae9d79a0a7354567ae30f44ab8e53310cb70a5c43aab14a6d9824dff571047dddc660adcf6dec2c4bd08de8c6318dea94667fbf7be34954853915d7515e4a1156090758a92c5d78b0cf85953b16cbe2b45979e310dd42a64776c17a38220700f0eb093ebe503b739f6f9fe57c0a9ce6d3f55c0dcea82fe78d1200758f8866c1a861d9c59c32666fd36f3a22a995ebd28634f1cd5bd5026554f4bbae37d22bc74be7c3348cdc4a3bbfc5f5366d77873f189cc3bbe4e04d639f45ce6fab91d62b2debc95886a85b24dcee65f197bf942add1f97ddf564cea1c95eca4c3a5c525934093e0c08e694e9007191b3ea1459fd41d590ecf5442121be1340fb0015c020e9be7eae2ed23c9d9597f721c0ab78155703f14bd5a44c4abf0adcbbb52615ddd8b32ca66164a1df8acb99515930647b2e528bc864ff400dd55f0d2299362bad0268fb025577c814240d639e8df1ec82e08bb80e37e4c8355d1a8b4a6f85f941bd02afa55c492129bb176ff7e40575da8bae2f6ed1945a401d31d97e8556c8007a6e87d38d0722a4090a1998558667376b2c58e98c4c04afbcab8f680073219570e5766afd8db6d9e17760fcd3f9c1c0e36b63195fdad01b1f753400590397d49b9ce29f1575d3c1047d066d688977a52cc8253691763e81d1f8c76450acb8c80f1e49f5675c4b12515801f4f58e6165f6e782daa2f100d781dae48325a2955cf716b7d86663824aaaae7814a1526d328cb6f03fc779b7a4507f5fc20bb85492d98ee78cf5e19559083ae170351247c683d394b62cf2968b9cefcd8fddd9c6ba3344a6e71fa5e1a8590bfa9b91c9212b6e77c165d4f8369f84086c0779ad3290a2354eb741ab0bbb0bcbcc14197362e24830cdfc503940175faa18b67edc0b77de7b47fd5298767207b0ff2ded2365ee5760a720810b4f505a511c9759545782d2b454f68fdc7dbb7affcb4dadaca5e451395acc57eb60dcb6ede11ea2820f6d91b0496bb309eedc69b96eccbbfbb9b7ccc6df9a7810a328c1438bcd2464d3a6432f889bf93ae80915ad1370126f62e599ad6477017753c94e90e67797d8bcd3dae418b63193262273f705f71a60267b5704f0d53b3a41fbb58d4526715ab980bffcc4f6b5abad068302427143b93dc709527c5530d7059d3f1c6e4b02bf104b7eac8f952abb73b66802d5f12d1e50c157adc6e501bb5e5acd3bfcf572cf0aa189088a99388045ce058a56359597c8d72cac6b3214d13e51cc9d6c61b23f572cdc575ea56e1c59cf48df8dfc9952daba81086aa66d7f27d6d9e25ae09aae0e639f5a0cb99baf6aa7c23e1aeead8f5de50a6fe4cf56ef7babd15d5527e065ef769eb3ce4f944d385da8d3454bb10fb8c8a43c4d7030092f5fa2719c9de38e80d880af75a8f162068e4905cf6c19c115188a15cdbc9ba32431c639db1463b079076917102de4369604c9a0759cfb72934e9afb4b9ee0bd0015d9f38187341dbf890628722c315244ffed3502228d90ab875e6fa7cc14c3065fa18de1354fb3caed2f9be11aafd553a32d4c8bd6a9e5a43995b44d578d24125ed9655819ac0a838342913a758c0a8dd7681c5d0cd44c7ad94dd33fa540dcdbf8b269985456d1268e6b9064ce2c9a3e930a7e95d85726d0a21f843daa0ddb8b7144d7f07070ed528812ea996eab5c3692a29908dea9cd65ed315b4d78421c3499e203496e3f56d32868b0560d6cf822b0e09b6f7b9e6b5f42818a0bc04adc6496a05978cadbaad4ace3300fe36edfda61ba1caa92ce2e192e4d59a0c5f513aad5a5f5f546bbaf1e21915364c2396d36fddd4dd51296ba14c4cd2008519b034fbab6f881d1bce59c579f6ad5f11b67a743586826849e7a013a64644fecc4161a5f65cd8f6f76c0fc6179f31b0b26842c38e891daba0ebc0e6c5244fbe5887e2684b6e4f295bda1303034f814e400459f3b4094254a84cc9a69a65e2ba2c3733d6ab4282b019ae2f054912f5f006388e56c216d832a0ea3f6bbfcff82765b550036ee4ff70179ae65e5dbaacba86218b0e2691597451f4307db6c2019da2ea601d41d7c3604efb94f9feb24c81fc5c10c22a80ffb2cbc82783d00df3c2b315f1901efa7979a091d95d558d972b6c6aa4af7a1c5499c7b3382fa7f7b4c855731ffdd946a35005528cd8a1a3bba174d3ee632b0ae1b968a1905d2829c156c8e2443310c14b032f50f01fe5164b32b6134457136ec7e02be6b7fc3e2d095d27708ccbdbcc2f21f0ece7ecfcac83edce2134baf9525b4db5f09bc4121aa6506f6bc845d45cccb9132ae0457f9da68f809f66010615295827a274a8715956c7d7a606f33eedc63bc1763d0fc43c0b99a45a8777757d92e8acb57fbca32c2bc8c2faa46e1a82f2a67ff0c31f32336daeb1cc85ef3870e1917b58b4a9af5d494d7c9fa479a0f01fc840b0a1bf8a6</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/style.css" rel="stylesheet" type="text/css">
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/&text=Dreamhack-type-confusion"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/&title=Dreamhack-type-confusion"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/&is_video=false&description=Dreamhack-type-confusion"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Dreamhack-type-confusion&body=Check out this article: http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/&title=Dreamhack-type-confusion"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/&title=Dreamhack-type-confusion"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/&title=Dreamhack-type-confusion"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/&title=Dreamhack-type-confusion"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/&name=Dreamhack-type-confusion&description=Here&#39;s something encrypted, password is required to continue reading."><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://bintab1e.github.io/2024/08/08/Dreamhack-type-confusion/&t=Dreamhack-type-confusion"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    bintab1e
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
