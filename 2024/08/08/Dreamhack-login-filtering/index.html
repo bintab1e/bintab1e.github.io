@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang=ko>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dreamhack login-filtering">
+<meta property="og:url" content="http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/index.html">
+<meta property="og:site_name" content="bintab1e">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2024-08-08T12:07:02.000Z">
+<meta property="article:modified_time" content="2024-08-08T12:14:43.729Z">
+<meta property="article:author" content="bintab1e">
+<meta property="article:tag" content="Dreamhack-web">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/logo.png">
+        
+      
+      
+      
+    
+    <!-- title -->
+    <title>Dreamhack login-filtering</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/08/08/Dreamhack-type-confusion/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/&text=Dreamhack login-filtering"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/&title=Dreamhack login-filtering"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/&is_video=false&description=Dreamhack login-filtering"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Dreamhack login-filtering&body=Check out this article: http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/&title=Dreamhack login-filtering"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/&title=Dreamhack login-filtering"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/&title=Dreamhack login-filtering"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/&title=Dreamhack login-filtering"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/&name=Dreamhack login-filtering&description=Here&#39;s something encrypted, password is required to continue reading."><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/&t=Dreamhack login-filtering"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Dreamhack login-filtering
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">bintab1e</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-08-08T12:07:02.000Z" class="dt-published" itemprop="datePublished">2024-08-08</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Dreamhack-web/" rel="tag">Dreamhack-web</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="e6fd932ab51ca1aac388948a4b9a81139ef9db27135604866b790d31293e7125">7c32bb0b48fca3fd0f326eefdb8ea21b2089bc2d12b9c4ff550653d8aea41991caac12aabcd44c4045345b0cb7471a3c87d55ebc8ed58f08507ed408b550f1c2d5854e53f89aa2a22dfed868109737816ba1c31e6e91d3844ecb1eb7b6dca2739d1cb96c459604ff6c577a6e5e68fbd52f346860f23b25df7ddea78cb4175071e8614ceceddddbddca1a116bad0f0f6f4386d3e49dc54ebfb581dfe85c05c1032c664d47901cb3e68ae01443be11b60b49274788a6b2af8abaa0c0bb4c5e45d1fc2ff0fb6e9493ab64a1e43362b04ec74c3e0a810dd478634563210c5a73b8333cd096c7efd62eca468ac74a2f74e2e6834f951b547d6d34ee0f8928c6a39885d5b3a1665610203d3364e39197e99134f29b7ebdb6420615e204bc4def8cc022aa675559357bc8ae4b146e0ac19d75f7fcf4a986fc30c40242ecca22e3735c6e01415043c97a86c3489fc0052d6ba3c809f722683d1121d160ad30f536ef94918849823c00332b0c39f6848d8011f9a7d9c8a6001f7aa9a8828787dd898485cc40b55d53a0644f481e3b584558a15f534ef6b3824fcdebdaa18de04b070c977c5f87589a37dab5d8c18b74d8b10766357f9b5616fc721052a70b941738461416eb061640237677616e440a594d84ee1ca10377f69644f4d0c0f68339524e9bc01f1a3c4af005affb5703b3a34dd0954adad1c820625172e6bd12cc4785fe48984ed580028a5e6986952c83ea5605945945e94bf252ac946bb6b2a9d29f93da2d2c67c758ade25ec9e05ab50f18ee8c49131d8f675bc930327e6aacdb7c133cc2b83b8fcf7aca1dfded19e1c884bb797557984638d8462f2683d631c2992b1eab632e83bc58a0309706b449ac2435e4b6677d6d24ad50982dd8d37e60a55415d5b4b2b9546d10b5a721f0ce943520debaf7d86017690a1a49af3551ea5105737099e5cffef8be5cc4d5af269195d051f3aba87f0d8cff65d794b0c4dbed84320a82623218da1cf1bc432c129904a35209c9e0d77e76970fede6849ff0f1833ed4b1b6c04753308590e45927a440a9570655f8c536db41573fdf237b0af323c205ddbee7cb7bd74ac02110b6bb73486549b85f86152126d084772dbdcd8954da7ceb11c92f55ba6e6f104f121bceb43a73f857ca0dc6ea24673c195bb0d6a21e3480e4cf674d1b2cb3fc3f12694fc0be1c27a890758e91754f82f40279a138121e604424b2e8f8d0bb50b384694eaf43f596bf7d3c751e14ae9ad6810698c0b74c5a1f46d3d2189471b5fd7ccd3fcea3acd72746c7014290338ba2f282c39e39eb816fa3a8d15aaf03538d63ff986d8c36d5e5765f4e9fa923181eac55dff0cb7c6fee85a4a51abcd48b111d4fd531ba4fc265b0c7fa6afa54993b8a6ad797c040e6f35deb21913aa5d998792bd610ab16b652c4d97d007883e7be3998cb6b3391d7acc42759341f40bfdf1ce4011f36fe99e78d70beb5e5729a5c5aa1ab0bc160a4540d86e51859a67ff366c7f028982da70b9b81388d9938b7ce131cf31ad7ebba06f8d040171ec56d9709fb99475e4e21c3856823fc3d0decfd5928167c03a9c0cece447b6cb3abf3ea674d39636179ed39e089f37a853883aac797be7d92d36c42f342f87318e8b8bb9c5b3828286deb354f23f4867e58119b6d77e297f3d3586815aec07ad064be0337aa184b5ddc48e9172924c0bdcd9e0939b40d0d833ae222d1039f7b191f89764cb25a6c9fcf79051be583fdbe15b03de58ffa32337555631bc988d01a4e1d7d9199ea0a15685ebb37c7b850a84f8a7f2463245d1d0ff830dce9d597c42659023e5968bfdd124659e877bca634a93a11442162813b2e5e31f1405f076fda4977dddd798910f70c91698714b422e08cb0fd4307fbe2f3ed0d135ba0ba185d352ef0f202e97de56676b9a4beb3450dc8e9fda4a4dd920085a0e8c2d5f5a3782a42642c0b50b56397aee4eef95214ae738432b6340bf4643d1a1ac79acd6ae14fa69f6e77e1e49f66d1bb56b309ce740e9e85932bc658c1f59eb7d2b68d63d870c2c9c01474a79cf315c26319532f74105628445ba08d688f3c6c52d0cf8d5fecba5901a7ef8426c4724015719d7fc5b53aec11b6f25efc9c65ce8e2ce9b501bbab1edc272dfbf33c59e565a7ddb6eff048b57517b101c35f8f3d970edb3413aee029c900ef23e692636a269e90b9588d06ecf678b5fef91ebf3cf37ce4594c0d0f0fdf7704cef90f1b5fb17ee96cb48d216652007d736bd0fb5d64ef482486eee3889f5afd129f5a2de2908137b8e144a8553e279377cd4a9d638c94ff296920b2625802190c83201c38e77a3b064c577a70b9c82a0070451de1ebbb9b8711a059d989eaf84b8c1c667d2d3e1e005e8a3030a0a554700cc0071b25ca6a3f1f10d02437fec6d2d1c6533c32619cb82e8642c66993aac041fd643b39f1cdcfe29d9f4f57c93398de48060d508eb0da4ec31dc290658246b8f2895c2d3ffeaa57f7934a805edfb5125ecbdf79086320d10405df11cad3db9d6c879a0ca5e1e94b2d4c77d1d6576f3a8364b0f5a0845848c43221410e2f8da185b957cfe0e149fe15f25fc1c67151c860f67b6aa9642b29bd4e24e3ac6a81035e582414c0635ddcf880e164d9c17293047ae3b137921e4317932f908cb59fb97c581b44c2da6347eed8b966d96f3a3d6212267639f9419f9038ad6a5ff7ad8a816d5d3e7c4c929c04bb4a801ee139c1f7b5bebcaa69947e156ffcfbcd892ae3c42c23ac098825d32b43e9f36269e849b007c1fffc17ac8cef5532a205135ffb4477bd883db52baf64e5ad185a4c810ad135c118b53bbe8946b1a53d169273c66a69b942f34eabfe941eab30976982264798cc50f0dc8ee73075c7d7e8ca0c2f4deef94a21958cca6e0b0b0455a76fabab0811b147ffa4e8989034a59b640c5e323262a8a6cc84a4c35b76b212b6564df1a674b85d51ed9f76382bbacbb2e6eb1465e4b60f014ede04026fdeb77c3b173a2fb729402ba56d6b1aaedd42e143ed40f27d498e821e31b87fa884dc1601f883417b4c3a22f631345435666a1aa99d956475969f53f2aa757e3c0fcbe38da8e5b8c19526e18cb82f2c39e3e1e35f100a057b013a94ca38499b718e7d5887ba99a5455c14a56e829381fe67edffd9c408a34df1892322f672a96cf8dcb67187efe9cc5e52d4747cdef305fa7b1a04c67eb87d5818d90c745cdde7f34ea51e8a0d1804e9edc5c46a706846b6f21a335b3dd80aabee85af6c3661b7603056d4d644957991094c041010cd6490ee702eb5132499b414d651f9651b62d8eac46f058124b343a6032baf41eaee4d972ada3326a923d9c4be8bc6069637c206adeaad4006093cf3c31e54f1158a4854e1e153244e2fd08e333585b2afcf5fc32a168b5cf25a8ca177de4b02dd49e2d86df3e8512274e21591ff358107ca6c10825a32ed3f8f4f930a08e32730112a6833d59f671d534e6828bdd5aacd6df48750f8db7077842cb0f253b317d96a0439e488ce6c92b3a8300e4759e371df8ebb3e193b2df74f11a2d079b987fff369a909e014253300a748aa219f17c238e38f86d4804fc19c8ab318509d69ee193a51ace910b3233a9d56e680f0d71801a6d1083a617618849958f62e799e56e5ca1bbb94393e6c9227becd3e0c006043b5e873caa442e5e5be7ea0145eb684a065ba0f062ab377414982a3be23bd07d5e9fcf8ded7fcc8f7139a2a4e8408422c1af6e1f644a238750a4dbf897b08f1dad3ace642afbccebf36365909efb73c681257c5237095b464ed9f64f89743f8f091048a2e2e34b10084231f0a014bb10800034284ee2ea3eae418581bce22288d65117ae156554404d71f728d2bba34674209a32c0d05c79101d17c673123d3a0e77675e3d55585848aa78bd88a2d0b4963b3f6ee7037c5511d28eb4beea612a38dee68c0f26301fb1191b4fc56db9e3baa061496948acbc788eea75326efa919c4fa4b5fdcb053f2db7a29b1bcea2a87ee20df733010f79114874cdf12609e3d691cf0461d136ee1a6c009e7e67c02be5f58921c7c6cfc365aafacfdad7f9a8de6c00d681b69c90d1dd0a271240b3f9bee95ff662c8760d3230ac5b876b4f66546e8e9f0a2893b7dcd3bd6350cbf78fd9093bf19028ab9673c6d0dd1d59d7f38c8ce6c142f7fde053189d5b7f4ae19c00c1f535df41bed65cc51f0d579ce2e536dfa59d65e892fa7b8d9685d5a8c19c2998050721eed6d7bb49b6e3197059170502e3549532c962072270c63c1e23ca004f25f5c449766ffaeddaf58c26e816f976882093da9cddc6e592a24b6a17e797baf6f31f510f36a2f522f31e51ffc01f448db866aa19c07076e94b51b3002d4ba257c65be6c236542a568b50c638da468365566430acfa2cd9166e183aae846dae62826650be68712a0d9aa7b928e6ff88b6188b149bccb11cb9990ee90278f78b5d9b3e06f8f00a02f169e98858bfbf69e67ae7a9449ac5f49740616bdc4b529330d87f3e5c204084f573181b543292abd16845a2ddbaa657207a27027d22422982c6669834261136a3c2fa5fb46f29958c185bf9b14456cb47f803b622a0c98364a88b8c37be60d804820becaccad9d50038dd76b9151c3b3938d93dea93116934c3544086e392d286a9db173ec1ed530a22bc2dda17af45ce6a9d6cd0bb6a3ad4e290e0af0db281b763611cf4ddce4a216c77494d9eb63aa97f2b120f64522d6b1850b2ee3bf4fe6e9aa26376b09b32cf485613bb501992f264ed37ec389d062d5ae1ac470f32f2a32ab326b913735dc6cf1b20bf267f0a8cce8145a055bfa3a817f3fa6288739a36a4c57105fd07ae52bf90cb40121ce2e04eb987ae551a8621ff52d37dfbe8087d6a8510aa5e12d959b189ed8959a8ee65d3b028d10455149a60fd5d16b29692a106598e400e3216626e6124a7d14391e16b7ee2c1ac6bcc125d87951ab7ea17412ebf8b2d970581f411b79c5cc3120723a57636baace86f3d1364ba76bae1059e5c4c4492976c2738206029082472d6b52991c825ba697cc94b5ea10e0aa0c6b5a65d563c8362dc843148edf44a9d3a88eb19986137ddcededcd164d3662501cd34a9223698a4903a289d96410e1f1f031d233a93419cdbd1a504d7d3e311460409b194893f795eaff114ba1b488356667116efb1377cc09177c1fef8d3061341d07ad2bf9f835480c6e67e1570b2a566ddd0e264c91392fc32b93b392ef4ceda56925d5ed84a8814bb8d547ae6e9be2b47f381fa00b57469ba1cb12f35092e1b44c5a353ba8d4f0e1855f9b884f290867ce96c554c9f3781e1148dfdfa2e4562c4448cf78667d55dc8cb5dc0b10657b967d2ef630ec01bcfce286be5578808c476f2d2135d8e38c2e26074f5787088d9412b282e0c9cb60353fdd82b455ebe43b9770bc68b8d423ddb24246ea9950dd0d9fcf58e3505161c7c047be1c414946d6f2ddc45d62fa148d9b82a41ed2f7b9106fbad576e6691892ac3c32b6e1c157d9ceb66c606021c5221c277b531c1e6c3f10d38cd05e26ed91f9f83daf0914e18f6b2a3eca0a4bea3dbeac1ac215c442789e97cbc72d69378ecef85a2f89f0c5d08d622aee7d3d0d59229d533fe4864e89a195c454f660c3611bc0b4f1a2c69a36a9d409acafbd25f1b015aa2ed5b495125ae635b99251a78b31d738a71ed1a15eb37aa14945f0907f0e1b46827db45d1fbe65f7753f3a21b4d31c512eb2b59f27adb0f6360289898fcfe95956cefdc517a5c887c1df4dd737ebbbede6a0851ebd0bb4fbde14959a2a5189458d66e79ee56730ad2c44875d1641e66d5b4becd4c493cac88872889d4ac136b67cd2fd3c10c4ce7b334c8bcc4e52d857579e62d25a58f5b35e6da0ba65ec83a16efc11ffd2d052b18c474e89ea045f1b52b7f85687404f30dd3d9389ada3bdfc016d3d9337e3eee5fb53ba451332657b9689852994ecf162ca40366dda2c6c6ad4ba49796b00b9a2d7f2214ec148b0760f5c4d8fde2d1e8626b58097fadf1cb701a0904f02084f801bd300f8b16e25412943db7d72cdd172a7dbdf1377dfddd0993bdb2a446a157eda932c6057899ab02b485a066db8f82d15d1f1b489627ac3b8bef6df6e9f85518424a20355b1b1dce060f88fbeb77155f7d66c5426cf01753c4dc3067073466605bf005c914bc54dbd3f05628267c1342e60c39007dd746f4246f7a5a687425b7010002c6840f075e20b83988b7bd80309ca664e87804f196fc9f9b0e951d821e09aa09a1f3e1bd9b85f3f108ac821bcb752b0013d5cd891c9654e5c2debf550f629135303f5b3610c8956e69ffe6582c8b440cde107ad94a87e2dfeee09eb6e59620df0096d1aec25ae9c099394469bbe8ba32411fb5de7f8d99992986177d153e5bbe1b83fc593bf1544030d7599318814a6122cd66e9831805f53614f01eddaaa49bf6ba8d1e48d364af6b645da95ead3c55814f212c14ccbb865933f7e7e874631474389c122f5b8c01ab17fc3cf7883eb2c7a2b61a5ca06f3b03cab0848acc66369443d7d210da941469c761a4a25268b73d80a868fca16b523cecac62acd6d530f4518e7d30f03dee5ccf9e5e90e19576a5df00788462bb5401cb6f455019d95e66c52a8</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/style.css" rel="stylesheet" type="text/css">
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/&text=Dreamhack login-filtering"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/&title=Dreamhack login-filtering"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/&is_video=false&description=Dreamhack login-filtering"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Dreamhack login-filtering&body=Check out this article: http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/&title=Dreamhack login-filtering"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/&title=Dreamhack login-filtering"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/&title=Dreamhack login-filtering"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/&title=Dreamhack login-filtering"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/&name=Dreamhack login-filtering&description=Here&#39;s something encrypted, password is required to continue reading."><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://bintab1e.github.io/2024/08/08/Dreamhack-login-filtering/&t=Dreamhack login-filtering"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    bintab1e
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
