@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang=ko>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dreamhack error-based-sql-injection">
+<meta property="og:url" content="http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/index.html">
+<meta property="og:site_name" content="bintab1e">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2024-08-08T12:32:16.000Z">
+<meta property="article:modified_time" content="2024-08-08T12:38:44.688Z">
+<meta property="article:author" content="bintab1e">
+<meta property="article:tag" content="Dreamhack-web">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/logo.png">
+        
+      
+      
+      
+    
+    <!-- title -->
+    <title>Dreamhack error-based-sql-injection</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/08/08/Dreamhack-session-basic/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/&text=Dreamhack error-based-sql-injection"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/&title=Dreamhack error-based-sql-injection"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/&is_video=false&description=Dreamhack error-based-sql-injection"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Dreamhack error-based-sql-injection&body=Check out this article: http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/&title=Dreamhack error-based-sql-injection"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/&title=Dreamhack error-based-sql-injection"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/&title=Dreamhack error-based-sql-injection"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/&title=Dreamhack error-based-sql-injection"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/&name=Dreamhack error-based-sql-injection&description=Here&#39;s something encrypted, password is required to continue reading."><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/&t=Dreamhack error-based-sql-injection"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Dreamhack error-based-sql-injection
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">bintab1e</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-08-08T12:32:16.000Z" class="dt-published" itemprop="datePublished">2024-08-08</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Dreamhack-web/" rel="tag">Dreamhack-web</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="a206c7e849a02c010a76222905fe254b4af22581bed933c43fc9f8c4f0c9742f">7c32bb0b48fca3fd0f326eefdb8ea21b2089bc2d12b9c4ff550653d8aea41991caac12aabcd44c4045345b0cb7471a3c87d55ebc8ed58f08507ed408b550f1c2d5854e53f89aa2a22dfed868109737816ba1c31e6e91d3844ecb1eb7b6dca2739d1cb96c459604ff6c577a6e5e68fbd52f346860f23b25df7ddea78cb4175071d9a217cd6216311eadcb2aa179741065b5371457146077b21f944bd4708dbdea64d5a191c3f36f3271d4d55a75d0ce8b54a6cd19fd977542ea63eab6758d4d9a5171ecce0d7fb3f9466bb622a2a50b45663698b6da217c046acaa1f1180ee3e339e53a0d823223fe997b45fcc1b5fae365fe44208ae0c3122cbd7c4c6b55d6abbe89326ecd06be98461bc391fc1fcc5840356048df5606ba988c2afc4ea95aa4e8a0d33065a667f3f74316c2b9caea74d00586e95bed7057dde4526838fd193c82b34d46b54e427d7698f26d48aab18c9e36b376f16500994b5dde975df19c2fe8e4ac53f626f6636539fdc596ad18f6621bb60cc24452e9147f35e06da921a05779362717814ff4c643601ab68171feecb1507f7f4784e660f978d874268a538882a8899ec3671f5810416b06778f65f642936d1191475370e9d93f8ee0fa65fc4f150794db2db60d0ec3d593c940b06b99d9760c5ad64945044620b2f3575019db6d6bdb8a64f6b48e1b91affcd8af6e65ebeffe39764ea1416b75899af8653934d53d64af7cb307db080f2e447090bbc6e7d264471fcc23d29f55873c51f5ef8f4e3242cd713da42c243881ed2d3e4c4dc14f3f4fa310cdd5139c9646191e15129e3319d73aeb760fbdcc0b1de6290e13ca1712d0ebe43eb762574a6929458fc5b5478d4038321f4fde9e1cf87a4242462109a40c61e00dd6085d562762768e055d363c4732580b4af8163d2362c95336931d8ef21d8cf09adbee710752f7751100f9eb76c8a62567f63a167d13356c7a6fa258f860a18b34b005b144e02acd4cfb2133ccc03206846fed3461e5aefd6cf3b5a0d119c7711cccb6de1c7b72da4dd82c1c14019d526febba1b589d3fb852f6b182c3040127e0c804dae8dc8c5aa1058c7eca9dd9f65df84c5edc9c02ceafb69c39e7d5a3959f46c93b3435285c901d364ba4b921910abdc497119f4ca38d98cad55d9eb561d17dd27f96ab702eae1c028bca3ea09d0e2a7e7e618dfc3a56db8f4250d93b4f1c07a397c72e64b82ac22e12117502ff19c82732ff0c8392f34e1dffea60fc487072b795bd7d04dff2ed0a3f6105b8f4338722db76ec64e33ba977738185f664a7113a618ed6b65dd66dbf7b6a999d8351801f5c1ad941b108ecfe739f45c81089779b8ea7ce8bd09c3838e526293290584d035f5aa713448c784deccea035fc62da513c51d29d1016b4accc9fb380df0aadcb91aef90625930859791dce572509b5c5b89251194799a45de289a9b1493dc297f635b3700e3eec0f7ebd2ac8c8d0a250c2f637aa34f13b5c34dac44303de98d40be2792235055a3349f31afa9ba29e727935330f3bf2d83c62267b599046fe4f535fa26f586d4af2b1a7872caca958e713c6731ba74c77d0b2f76dbcb7cb3d3a7445c7e2e96d02a3fd9bd4ae02aa2334937cb8c72cc854e68ad9eff9a40200d638165b5f2d47b0c239846c05be16b0655178b003949a4745632b0125abf523976d631e1a122e9d683d99e5171c6d039237181a8ac8074be4c13e99058f41f4a023a28d09b8cf3862b2e67e633d96ad957566bff2e17bd2b2ec671f46571274526647c2a368c65f1dcef9888aa2ed8a5c90b246b28dd052972a873f3a79c34bb9aa1d0c7b0f5d0f1431bdb496e8b6fbbd7ad92a2ae342397f1efe2cc7af6676c68c8004960d521b787f8a073da41da62c9459fa4c285877bda10d59749d34af7f84b53bd2b49faf271ce3d86a70bef0e6fe1447d5ff0d18d47a11eec84be3dfaa6fc5c8c8d1b2618dc5a8c5abaa2b30e80cf161f0de2561ab1ee649d2aeaa2cec62a68f860b6725841e1e48b36c98e6a671872117c388be79642abcfe80aa85bc1a44deb9eff9570f94b93d5ee4cd514ccec2549d32f7e87a4dc743964fc81477d1b41efae0396ca59c1c044e3cda0eedebb641a66a2bc891d8606b18aef5e4bc7cc981ee5700f8e53b7d07f38fbbaf7985c37313a8ef2a473b8b0d3f50025572a32a334440c6a779c9d93ce0072d5da0ca74fde8e0481d3ca628d0b6dcd985edabefd0f1020d897afbd343696bc777a39aa24201a9b25687190bdce0d3dc4989e15dc664024979c0a4e1a004c306b9c4f733cd690768fc93e63b511d7f55542a68458c1d4cd01ab4dc0b399d15b9e2850a1ee072783d47edc237eaa4a7fd4764821ae4ec044bdbcec49a96260cc6aed21b0964cf9323103a37fe6cd6600433715f5acf4b34184806ba4efcc823d320f0969675504338197e4452a36c28d379b7431c5c9a0001fff3abae9142084738765ea2889f581b6cb401572afe6078fdd52df522d3f132575e304180bfc16bbe71e0ac31b7e9d0a522920fb54716ab3a591663364e5970a2e8f793ff63631f78c5f43408508b91306913735158dc281a0f68ce16d730053d44e3122017fff705d20a3d679cb39895c23e344d1e6061c2bf44ff76956cfb8a3ca887182d069538bd7616623c028c18055df6d1df5830d4404e1ff3c66b1ee7595a862231977794253a82ddf6ecfef046361940d2e4cbc7fdb6db26625aed28355214a03c667c6f1cb00a46d65cdf7abf743ae482e9e0fd4a0bc05d81cac029ad7534da2450d47102c18d2d8690780916706d7931f0828d1a13d7760ae0a07e2de70d62c1571326a88a4f2484893dde3f223edf3dd0a3da6dbc608e909adf46cd8053cdd15074d424d69f19ccbda41acdaefcfa86754115cfc9c82e109753887e4dcd3fd1d5822b47431e55240a37db24bc0aa42868c33d142e4343d68b1e253d9a5d0773e9f3334d930aa64906b545f6f1db0bd5d80b48d70e431d2cc9c8df6469647d96b95dea1168cbb0396bed065b1374bc4c491bd8d33e76cf27c692912072482dc2f8d6a008fb1a011da5bb9e3addd21fb37cc12b504d1760b5170ac4733f9b1f3421ee2270d0b12bf2675b70eff0cee51eb17ae09f422801e9bc768bd2db3c3d6d31800df579d466d822ff9217c548341b356446db8d284bd3a67f752bee8a28fee0759589f131d45a02a5b75a9b8c63f454d1f9ef74f75e643311cf3834bb1ed27a730304ed908e4a877263749147299b16b6c1c5594d9213fdb0c0e66da3fe05603390ea7d43db0699b9fc10f85115658305a3ae4d4ad45cb1bb98ee858f7d15ff28223643cbdb1d12df332fbf78280ade801ab0b898dec3ec0c7143b166544ebc8e7063892ad5ef95191ca52065ad254f28c68c4b1dc6d9db3a284405e83c3bdfd36de1bf971d3117f38053489366682288460546756174c9a4e6b1299469d5531c67e0454fb97343e642cc4ec6af8a6eb4c32026ef1af811f2558e3c4068260f4b3f78f06b1453ca1c11189898c2f42ec4c2658f6c4834ab6d1df13552895009e36864d13e7da776e219ed94a50639077173cfffcdc22167f88c14ea1014d5ca9fbd4d5b574e06cca4c2418f0fc579f2a2573eeeeacc3e588a2a034ccfcfaffd73ba1cfad78991</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/style.css" rel="stylesheet" type="text/css">
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/&text=Dreamhack error-based-sql-injection"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/&title=Dreamhack error-based-sql-injection"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/&is_video=false&description=Dreamhack error-based-sql-injection"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Dreamhack error-based-sql-injection&body=Check out this article: http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/&title=Dreamhack error-based-sql-injection"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/&title=Dreamhack error-based-sql-injection"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/&title=Dreamhack error-based-sql-injection"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/&title=Dreamhack error-based-sql-injection"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/&name=Dreamhack error-based-sql-injection&description=Here&#39;s something encrypted, password is required to continue reading."><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://bintab1e.github.io/2024/08/08/Dreamhack-error-based-sql-injection/&t=Dreamhack error-based-sql-injection"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    bintab1e
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
