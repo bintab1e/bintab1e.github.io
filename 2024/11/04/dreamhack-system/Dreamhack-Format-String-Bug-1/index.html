@@ -14,7 +14,7 @@
 <meta property="og:description" content="DescriptionExploit Tech: Format String Bug에서 실습하는 문제입니다. 23.11 update  binary updated Dockerfile is added to the attatchment  Analyze1234567891011121314151617181920212223242526272829303132#include &amp;lt">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2024-11-04T13:53:29.000Z">
-<meta property="article:modified_time" content="2024-12-23T14:11:36.913Z">
+<meta property="article:modified_time" content="2024-12-23T14:15:54.653Z">
 <meta property="article:author" content="bintab1e">
 <meta property="article:tag" content="Dreamhack">
 <meta name="twitter:card" content="summary">
@@ -176,7 +176,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RELRO           STACK CANARY      NX            PIE             RPATH      RUNPATH      FILE</span><br><span class="line">Full RELRO      No canary found   NX enabled    PIE enabled     No RPATH   No RUNPATH   fsb_overwrite</span><br></pre></td></tr></table></figure>
 <p>보호기법은 위와 같다.<br><br></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">get_string</span><span class="params">(<span class="type">char</span> *buf, <span class="type">size_t</span> size)</span> &#123;</span><br><span class="line">  <span class="type">ssize_t</span> i = read(<span class="number">0</span>, buf, size);</span><br><span class="line">  <span class="keyword">if</span> (i == <span class="number">-1</span>) &#123;</span><br><span class="line">    perror(<span class="string">&quot;read&quot;</span>);</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (i &lt; size) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; buf[i - <span class="number">1</span>] == <span class="string">&#x27;\n&#x27;</span>) i--;</span><br><span class="line">    buf[i] = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>문제는 get_string 함수를 통해 32비트만큼 buf 배열에 입력한다.<br><br></p>
+<p>문제는 get_string 함수를 통해 32 바이트만큼 buf 배열에 입력한다.<br><br></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">get_string(buf, <span class="number">0x20</span>);</span><br><span class="line"><span class="built_in">printf</span>(buf);</span><br></pre></td></tr></table></figure>
 <p>이때, 사용자가 입력한 값을 그대로 printf의 인자로 주어 FSB 트리거가 가능하다. FSB를 트리거하여 changeme 변수의 값을 1337로 변경해야 하므로, changeme 변수 위치를 구해야 한다.</p>
 <p>이때, PIE가 적용되어 있기 때문에, Code base를 먼저 구해야 한다.<br><br></p>
