@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang=ko>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="https:&#x2F;&#x2F;www.lazenca.net&#x2F;display&#x2F;TEC&#x2F;01.The+basics+technic+of+Shellcode  Shellcode쉘코드는 시스템의 특정 명령을 수행하기 위한 기계어 코드이다.일반적으로 어셈블리어로 작성 후 기계어로 변환하는 과정을 거쳐 생성한다.  Linux system call in assemblyC언어는 다양한 운영체제">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Tech] Shellcode">
+<meta property="og:url" content="https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/index.html">
+<meta property="og:site_name" content="bintab1e">
+<meta property="og:description" content="https:&#x2F;&#x2F;www.lazenca.net&#x2F;display&#x2F;TEC&#x2F;01.The+basics+technic+of+Shellcode  Shellcode쉘코드는 시스템의 특정 명령을 수행하기 위한 기계어 코드이다.일반적으로 어셈블리어로 작성 후 기계어로 변환하는 과정을 거쳐 생성한다.  Linux system call in assemblyC언어는 다양한 운영체제">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2024-12-30T13:04:00.000Z">
+<meta property="article:modified_time" content="2024-12-30T13:17:04.225Z">
+<meta property="article:author" content="bintab1e">
+<meta property="article:tag" content="lazenca">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/test.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/test.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/test.png">
+        
+      
+    
+    <!-- title -->
+    <title>[Tech] Shellcode</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Category</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/12/01/dreamhack-system/Dreamhack-ssp-000-1/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/&text=[Tech] Shellcode"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/&title=[Tech] Shellcode"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/&is_video=false&description=[Tech] Shellcode"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=[Tech] Shellcode&body=Check out this article: https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/&title=[Tech] Shellcode"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/&title=[Tech] Shellcode"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/&title=[Tech] Shellcode"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/&title=[Tech] Shellcode"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/&name=[Tech] Shellcode&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/&t=[Tech] Shellcode"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Shellcode"><span class="toc-number">1.</span> <span class="toc-text">Shellcode</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-system-call-in-assembly"><span class="toc-number">1.1.</span> <span class="toc-text">Linux system call in assembly</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#32-bit"><span class="toc-number">1.1.1.</span> <span class="toc-text">32 bit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#64-bit"><span class="toc-number">1.1.2.</span> <span class="toc-text">64 bit</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Save-argument-value-in-registers"><span class="toc-number">1.2.</span> <span class="toc-text">Save argument value in registers</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Assembly-Code-Example-32bit"><span class="toc-number">1.2.1.</span> <span class="toc-text">Assembly Code Example(32bit)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Assembly-Code-Example-64bit"><span class="toc-number">1.2.2.</span> <span class="toc-text">Assembly Code Example(64bit)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Change-to-Shellcode-format"><span class="toc-number">1.3.</span> <span class="toc-text">Change to Shellcode format</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shellcode-Test"><span class="toc-number">1.4.</span> <span class="toc-text">Shellcode Test</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Debugging"><span class="toc-number">1.5.</span> <span class="toc-text">Debugging</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Remove-null-byte"><span class="toc-number">1.6.</span> <span class="toc-text">Remove null byte</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Call-instruction"><span class="toc-number">1.7.</span> <span class="toc-text">Call instruction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Register"><span class="toc-number">1.8.</span> <span class="toc-text">Register</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        [Tech] Shellcode
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">bintab1e</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-12-30T13:04:00.000Z" class="dt-published" itemprop="datePublished">2024-12-30</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/pwnable/">pwnable</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/lazenca/" rel="tag">lazenca</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.lazenca.net/display/TEC/01.The+basics+technic+of+Shellcode">https://www.lazenca.net/display/TEC/01.The+basics+technic+of+Shellcode</a></p>
+</blockquote>
+<h1 id="Shellcode"><a href="#Shellcode" class="headerlink" title="Shellcode"></a>Shellcode</h1><p>쉘코드는 시스템의 특정 명령을 수행하기 위한 기계어 코드이다.<br>일반적으로 어셈블리어로 작성 후 기계어로 변환하는 과정을 거쳐 생성한다.<br><br></p>
+<hr>
+<h2 id="Linux-system-call-in-assembly"><a href="#Linux-system-call-in-assembly" class="headerlink" title="Linux system call in assembly"></a>Linux system call in assembly</h2><p>C언어는 다양한 운영체제와 아키텍처에서 호환될 수 있도록 표준 라이브러리를 제공한다.<br>표준 라이브러리는 내부적으로 System call을 적절히 호출해 다양한 시스템에서 컴파일과 실행을 가능하게 한다.</p>
+<p>Assembly 언어는 특정 아키텍처에 종속적인 특징을 가지고 있다.<br>표준 라이브러리에대한 호환성이 없기 때문에, 시스템을 제어하기 위한 System call을 직접 호출해야 한다.<br>이때, System call을 호출할 때는 지정된 System call 번호를 사용하여 호출한다.</p>
+<p>System call 번호는 해당하는 시스템의 운영체제와 프로세서 아키텍처에 따라 다르다.<br>리눅스에서는 아래와 같은 명령어로 확인할 수 있다.<br><br></p>
+<h3 id="32-bit"><a href="#32-bit" class="headerlink" title="32 bit"></a>32 bit</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@ubuntu:~/$ cat /usr/include/i386-linux-gnu/<span class="keyword">asm</span>/unistd_32.h</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> _ASM_X86_UNISTD_32_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _ASM_X86_UNISTD_32_H 1</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_restart_syscall 0</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_exit 1</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_fork 2</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_read 3</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_write 4</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_open 5</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_close 6</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_waitpid 7</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_creat 8</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_link 9</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_unlink 10</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_execve 11</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_chdir 12</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_time 13</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_mknod 14</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_chmod 15</span></span><br></pre></td></tr></table></figure>
+<h3 id="64-bit"><a href="#64-bit" class="headerlink" title="64 bit"></a>64 bit</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@ubuntu:~/$ cat /usr/include/x86_64-linux-gnu/<span class="keyword">asm</span>/unistd_64.h</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> _ASM_X86_UNISTD_64_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _ASM_X86_UNISTD_64_H 1</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_read 0</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_write 1</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_open 2</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_close 3</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_stat 4</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_fstat 5</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_lstat 6</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_poll 7</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_lseek 8</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_mmap 9</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_mprotect 10</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_munmap 11</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_brk 12</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_rt_sigaction 13</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_rt_sigprocmask 14</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __NR_rt_sigreturn 15</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Save-argument-value-in-registers"><a href="#Save-argument-value-in-registers" class="headerlink" title="Save argument value in registers"></a>Save argument value in registers</h2><p>Shellcode를 작성할 때, system call을 호출하기 위해 register를 사용하여 인자를 전달한다.<br>이때, 주로 System V ABI Calling Convention을 따른다.</p>
+<p>System call을 호출하기 위한 번호와 인자는 아래와 같이 전달한다.<br><br></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-                Regiester(32bit)     Register(64bit)</span><br><span class="line">system call            EAX                  RAX</span><br><span class="line">Argument 1             EBX                  RDI</span><br><span class="line">Argument 2             ECX                  RSI</span><br><span class="line">Argument 3             EDX                  RDX</span><br><span class="line">Argument 4             ESI                  R10</span><br><span class="line">Argument 5             EDI                  R8</span><br><span class="line">Argument 6             EBP                  R9</span><br></pre></td></tr></table></figure>
+
+<h3 id="Assembly-Code-Example-32bit"><a href="#Assembly-Code-Example-32bit" class="headerlink" title="Assembly Code Example(32bit)"></a>Assembly Code Example(32bit)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">section .data</span><br><span class="line">    msg db  &quot;Hello, world!&quot;,0x0a, 0x0d</span><br><span class="line"></span><br><span class="line">section .text</span><br><span class="line">    global  _start</span><br><span class="line">  </span><br><span class="line">_start:</span><br><span class="line">    mov eax, 4</span><br><span class="line">    mov ebx, 1</span><br><span class="line">    mov ecx, msg</span><br><span class="line">    mov edx, 14</span><br><span class="line">    int 0x80</span><br><span class="line">  </span><br><span class="line">    mov eax, 1</span><br><span class="line">    mov ebx, 0</span><br><span class="line">    int 0x80</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@ubuntu:~$ file ./hello</span><br><span class="line">./hello: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), statically linked, not stripped</span><br></pre></td></tr></table></figure>
+
+<h3 id="Assembly-Code-Example-64bit"><a href="#Assembly-Code-Example-64bit" class="headerlink" title="Assembly Code Example(64bit)"></a>Assembly Code Example(64bit)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">section .data</span><br><span class="line">    msg db      &quot;hello, world!&quot;,0x0a, 0x0d</span><br><span class="line"> </span><br><span class="line">section .text</span><br><span class="line">    global _start</span><br><span class="line"></span><br><span class="line">_start:</span><br><span class="line">    mov     rax, 1</span><br><span class="line">    mov     rdi, 1</span><br><span class="line">    mov     rsi, msg</span><br><span class="line">    mov     rdx, 14</span><br><span class="line">    syscall</span><br><span class="line"> </span><br><span class="line">    mov    rax, 60</span><br><span class="line">    mov    rdi, 0</span><br><span class="line">    syscall</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@ubuntu:~$ file ./hello64</span><br><span class="line">./hello64: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, not stripped</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Change-to-Shellcode-format"><a href="#Change-to-Shellcode-format" class="headerlink" title="Change to Shellcode format"></a>Change to Shellcode format</h2><p>Shellcode는 운영체제나 라이브러리의 도움 없이 독립적으로 실행되어야 한다.</p>
+<p>Assembly 코드는 링커를 통해 외부 라이브러리 및 심볼과 연결된다. 그러나 Shellcode는 이런 링킹 과정 없이 독립적으로 실행되야 하므로 텍스트 및 데이터 세그먼트를 사용할 수 없다.</p>
+<p>따라서, 위에 작성된 예시는 Shellcode라고 할 수 없으며, 텍스트 세그먼트나 데이터 세그먼트에 의존하지 않고 메모리 내에서 모든 작업을 수행해야 한다.</p>
+<p>write 시스템 콜을 통해 문자열을 출력하고자 하면, 두 번째 인자로, 출력하고자 하는 문자열의 주소를 전달해야 한다. 하지만, 데이터 세그먼트를 사용할 수 없으므로, mov 명령어를 통해 문자열의 주소를 직접 레지스터에 로드할 수 없다.</p>
+<p>이는, call과 ret 명령어를 사용해 해결한다.</p>
+<ol>
+<li>call 명령어로 함수를 호출</li>
+<li>call 다음 출력하고자 하는 문자열을 배치</li>
+<li>call 명령어가 실행되면, 다음 리턴 주소인 문자열의 주소를 스택에 저장</li>
+<li>pop 명령어를 사용하여 스택에 저장된 리턴 주소를 ecx 레지스터에 저장</li>
+<li>write 시스템 콜의 인자로 ecx 레지스터에 전달<br></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">BITS 32</span><br><span class="line"></span><br><span class="line">call helloworld</span><br><span class="line">db &quot;Hello, world!&quot;, 0x0a, 0x0d</span><br><span class="line"></span><br><span class="line">helloworld:</span><br><span class="line">    pop ecx</span><br><span class="line">    mov eax, 4</span><br><span class="line">    mov ebx, 1</span><br><span class="line">    mov edx, 15</span><br><span class="line">    int 0x80</span><br><span class="line"></span><br><span class="line">    mov eax,1</span><br><span class="line">    mov ebx,0</span><br><span class="line">    int 0x80</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">bintable@bintable-virtual-machine:~/Desktop/lazenca$ ndisasm -b32 ASM32</span><br><span class="line">00000000  E80F000000        call dword 0x14</span><br><span class="line">00000005  48                dec eax</span><br><span class="line">00000006  656C              gs insb</span><br><span class="line">00000008  6C                insb</span><br><span class="line">00000009  6F                outsd</span><br><span class="line">0000000A  2C20              sub al,0x20</span><br><span class="line">0000000C  776F              ja 0x7d</span><br><span class="line">0000000E  726C              jc 0x7c</span><br><span class="line">00000010  64210A            and [fs:edx],ecx</span><br><span class="line">00000013  0D59B80400        or eax,0x4b859</span><br><span class="line">00000018  0000              add [eax],al</span><br><span class="line">0000001A  BB01000000        mov ebx,0x1</span><br><span class="line">0000001F  BA0F000000        mov edx,0xf</span><br><span class="line">00000024  CD80              int 0x80</span><br><span class="line">00000026  B801000000        mov eax,0x1</span><br><span class="line">0000002B  BB00000000        mov ebx,0x0</span><br><span class="line">00000030  CD80              int 0x80</span><br><span class="line"></span><br><span class="line">bintable@bintable-virtual-machine:~/Desktop/lazenca$ hexdump -C ASM32</span><br><span class="line">00000000  e8 0f 00 00 00 48 65 6c  6c 6f 2c 20 77 6f 72 6c  |.....Hello, worl|</span><br><span class="line">00000010  64 21 0a 0d 59 b8 04 00  00 00 bb 01 00 00 00 ba  |d!..Y...........|</span><br><span class="line">00000020  0f 00 00 00 cd 80 b8 01  00 00 00 bb 00 00 00 00  |................|</span><br><span class="line">00000030  cd 80                                             |..|</span><br><span class="line">00000032</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Shellcode-Test"><a href="#Shellcode-Test" class="headerlink" title="Shellcode Test"></a>Shellcode Test</h2><p>생성한 Shellcode를 python을 통해 shellcode 내용을 변환한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">bintable@bintable-virtual-machine:~/Desktop/lazenca$ python</span><br><span class="line">Python 2.7.12 (default, Nov 12 2018, 14:36:49) </span><br><span class="line">[GCC 5.4.0 20160609] on linux2</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line">&gt;&gt;&gt; f = open(&#x27;ASM32&#x27;, &#x27;r&#x27;)</span><br><span class="line">&gt;&gt;&gt; data = f.read()</span><br><span class="line">&gt;&gt;&gt; data</span><br><span class="line">&#x27;\xe8\x0f\x00\x00\x00Hello, world!\n\rY\xb8\x04\x00\x00\x00\xbb\x01\x00\x00\x00\xba\x0f\x00\x00\x00\xcd\x80\xb8\x01\x00\x00\x00\xbb\x00\x00\x00\x00\xcd\x80&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>이후 아래 코드를 통해 생성한 shellcode를 테스트할 수 있다.</p>
+<ol>
+<li>shellcode에 생성한 shellcode를 저장</li>
+<li>strlen() 함수를 사용하여 shellcode에 저장된 문자열의 길이를 확인</li>
+<li>strcpy() 함수를 사용해 shellcode의 내용을 실행 가능한 메모리 영역으로 복사</li>
+<li>code 영역을 함수 포인터(void (*function())) 형태로 변환</li>
+<li>function()을 호출하여 data 영역에 저장된 shellcode를 실행</li>
+</ol>
+<p>gcc를 통해 빌드하여 실행하면 다음과 같이 Segmentation fault 에러를 확인할 수 있다.<br><br></p>
+<p><strong>shellcode.c</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> shellcode [] = <span class="string">&quot;\xe8\x0f\x00\x00\x00Hello, world!\n\rY\xb8\x04\x00\x00\x00\xbb\x01\x00\x00\x00\xba\x0f\x00\x00\x00\xcd\x80\xb8\x01\x00\x00\x00\xbb\x00\x00\x00\x00\xcd\x80&quot;</span>;</span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> code[];</span><br><span class="line"> </span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> len = <span class="built_in">strlen</span>(shellcode);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Shellcode len : %d\n&quot;</span>,len);</span><br><span class="line">    <span class="built_in">strcpy</span>(code,shellcode);</span><br><span class="line">    (*(<span class="type">void</span>(*)()) code)();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bintable@bintable-virtual-machine:~/Desktop/lazenca$ sudo gcc -o shellcode -fno-stack-protector -z execstack --no-pie -m32 shellcode.c</span><br><span class="line">shellcode.c:5:15: warning: array ‘code’ assumed to have one element</span><br><span class="line"> unsigned char code[];</span><br><span class="line">               ^</span><br><span class="line">bintable@bintable-virtual-machine:~/Desktop/lazenca$ ./shellcode</span><br><span class="line">Shellcode len : 2</span><br><span class="line">Segmentation fault (core dumped)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Debugging"><a href="#Debugging" class="headerlink" title="Debugging"></a>Debugging</h2><p>strcpy() 함수가 호출되는 곳에 BP를 설고 실행해 보면, strcpy() 함수가 호출되기 이전이기 떄문에, code 변수(0x804a074)에는 아무런 값도 저장되어 있지 않다.</p>
+<p>이때, shellcode 변수 영역에 작성한 shellcode가 저장되어 있는 것을 볼 수 있다.<br><br></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">gdb-peda$ b *0x080484af</span><br><span class="line">Breakpoint 1 at 0x80484af</span><br><span class="line">gdb-peda$ r</span><br><span class="line">Starting program: /home/bintable/Desktop/lazenca/shellcode </span><br><span class="line">Shellcode len : 2</span><br><span class="line"></span><br><span class="line">gdb-peda$ x/64bx 0x804a074</span><br><span class="line">0x804a074 &lt;code&gt;:	0x00	0x00	0x00	0x00	0x00	0x00	0x00	0x00</span><br><span class="line">0x804a07c:	0x00	0x00	0x00	0x00	0x00	0x00	0x00	0x00</span><br><span class="line">0x804a084:	0x00	0x00	0x00	0x00	0x00	0x00	0x00	0x00</span><br><span class="line">0x804a08c:	0x00	0x00	0x00	0x00	0x00	0x00	0x00	0x00</span><br><span class="line">0x804a094:	0x00	0x00	0x00	0x00	0x00	0x00	0x00	0x00</span><br><span class="line">0x804a09c:	0x00	0x00	0x00	0x00	0x00	0x00	0x00	0x00</span><br><span class="line">0x804a0a4:	0x00	0x00	0x00	0x00	0x00	0x00	0x00	0x00</span><br><span class="line">0x804a0ac:	0x00	0x00	0x00	0x00	0x00	0x00	0x00	0x00</span><br><span class="line"></span><br><span class="line">gdb-peda$ x/64bx 0x804a040</span><br><span class="line">0x804a040 &lt;shellcode&gt;:	0xe8	0x0f	0x00	0x00	0x00	0x48	0x65	0x6c</span><br><span class="line">0x804a048 &lt;shellcode+8&gt;:	0x6c	0x6f	0x2c	0x20	0x77	0x6f	0x72	0x6c</span><br><span class="line">0x804a050 &lt;shellcode+16&gt;:	0x64	0x21	0x0a	0x0d	0x59	0xb8	0x04	0x00</span><br><span class="line">0x804a058 &lt;shellcode+24&gt;:	0x00	0x00	0xbb	0x01	0x00	0x00	0x00	0xba</span><br><span class="line">0x804a060 &lt;shellcode+32&gt;:	0x0f	0x00	0x00	0x00	0xcd	0x80	0xb8	0x01</span><br><span class="line">0x804a068 &lt;shellcode+40&gt;:	0x00	0x00	0x00	0xbb	0x00	0x00	0x00	0x00</span><br><span class="line">0x804a070 &lt;shellcode+48&gt;:	0xcd	0x80	0x00	0x00	0x00	0x00	0x00	0x00</span><br><span class="line">0x804a078:	0x00	0x00	0x00	0x00	0x00	0x00	0x00	0x00</span><br></pre></td></tr></table></figure>
+
+<p>에러 발생의 이유는, shellcode에 담겨 있는 null byte(\x00)가 문자열의 끝으로 인식되기 때문이다.</p>
+<p>strlen() 함수와 strcpy() 함수는 null byte 이전까지만 데이터를 계산하고 복사한다.</p>
+<p>이 때문에,  Shellcode가 code 영역에 전체가 복사되지 않아 실행시 에러가 발생한다.<br><br></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gdb-peda$ ni</span><br><span class="line">gdb-peda$ x/32bx 0x804a074</span><br><span class="line">0x804a074 &lt;code&gt;:	0xe8	0x0f	0x00	0x00	0x00	0x00	0x00	0x00</span><br><span class="line">0x804a07c:	0x00	0x00	0x00	0x00	0x00	0x00	0x00	0x00</span><br><span class="line">0x804a084:	0x00	0x00	0x00	0x00	0x00	0x00	0x00	0x00</span><br><span class="line">0x804a08c:	0x00	0x00	0x00	0x00	0x00	0x00	0x00	0x00</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Remove-null-byte"><a href="#Remove-null-byte" class="headerlink" title="Remove null byte"></a>Remove null byte</h2><p>아래 덤프된 코드 보면, 각각의 null byte를 확인할 수 있다.<br><br></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">bintable@bintable-virtual-machine:~/Desktop/lazenca$ ndisasm -b32 ASM32</span><br><span class="line">00000000  E80F000000        call dword 0x14</span><br><span class="line">00000005  48                dec eax</span><br><span class="line">00000006  656C              gs insb</span><br><span class="line">00000008  6C                insb</span><br><span class="line">00000009  6F                outsd</span><br><span class="line">0000000A  2C20              sub al,0x20</span><br><span class="line">0000000C  776F              ja 0x7d</span><br><span class="line">0000000E  726C              jc 0x7c</span><br><span class="line">00000010  64210A            and [fs:edx],ecx</span><br><span class="line">00000013  0D59B80400        or eax,0x4b859</span><br><span class="line">00000018  0000              add [eax],al</span><br><span class="line">0000001A  BB01000000        mov ebx,0x1</span><br><span class="line">0000001F  BA0F000000        mov edx,0xf</span><br><span class="line">00000024  CD80              int 0x80</span><br><span class="line">00000026  B801000000        mov eax,0x1</span><br><span class="line">0000002B  BB00000000        mov ebx,0x0</span><br><span class="line">00000030  CD80              int 0x80</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Call-instruction"><a href="#Call-instruction" class="headerlink" title="Call instruction"></a>Call instruction</h2><p>call 명령어의 피연산자는 32 비트(dword)를 사용하고 있어, 작은 값(0x14)이 할당될 경우, 남은 부분에 null byte가 포함된다.</p>
+<p>이를 해결하기 위해, jmp 명령어를 사용하여 helloworld 함수를 건너뛰고, last 함수로 이동할 수 있다.</p>
+<p>last 함수에서 helloworld 함수를 호출하고, 다음 출력할 메세지를 저장하여 null byte를 제거할 수 있다.<br><br></p>
+<p><strong>ASM32-2.s</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">BITS 32</span><br><span class="line"></span><br><span class="line">jmp short last</span><br><span class="line">helloworld:</span><br><span class="line">    pop ecx</span><br><span class="line">    mov eax, 4</span><br><span class="line">    mov ebx, 1</span><br><span class="line">    mov edx, 15</span><br><span class="line">    int 0x80</span><br><span class="line"> </span><br><span class="line">    mov eax,1</span><br><span class="line">    mov ebx,0</span><br><span class="line">    int 0x80</span><br><span class="line"></span><br><span class="line">last:</span><br><span class="line">    call helloworld</span><br><span class="line">    db &quot;Hello, world!&quot;, 0x0a, 0x0d</span><br></pre></td></tr></table></figure>
+
+<p>call 명령어에서 null byte가 제거된 이유는 음수 값 때문이다.</p>
+<p>jmp short 명령어는 -128 ~ 127 범위 값을 사용하여 0x20  바이트만큼 이동한다.</p>
+<p>그러나, call 명령어는 helloworld 함수를 호출하기 위해, -0x22로 이동해야 한다. 이때, 음수 값을 표현하기 위해 2의 보수로 변환되어 0xFFFFFFDD로 표현되어 null byte를 제거할 수 있다.<br><br></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">bintable@bintable-virtual-machine:~/Desktop/lazenca$ ndisasm -b32 ASM32-2</span><br><span class="line">00000000  EB1E              jmp short 0x20</span><br><span class="line">00000002  59                pop ecx</span><br><span class="line">00000003  B804000000        mov eax,0x4</span><br><span class="line">00000008  BB01000000        mov ebx,0x1</span><br><span class="line">0000000D  BA0F000000        mov edx,0xf</span><br><span class="line">00000012  CD80              int 0x80</span><br><span class="line">00000014  B801000000        mov eax,0x1</span><br><span class="line">00000019  BB00000000        mov ebx,0x0</span><br><span class="line">0000001E  CD80              int 0x80</span><br><span class="line">00000020  E8DDFFFFFF        call dword 0x2</span><br><span class="line">00000025  48                dec eax</span><br><span class="line">00000026  656C              gs insb</span><br><span class="line">00000028  6C                insb</span><br><span class="line">00000029  6F                outsd</span><br><span class="line">0000002A  2C20              sub al,0x20</span><br><span class="line">0000002C  776F              ja 0x9d</span><br><span class="line">0000002E  726C              jc 0x9c</span><br><span class="line">00000030  64210A            and [fs:edx],ecx</span><br><span class="line">00000033  0D                db 0x0d</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Register"><a href="#Register" class="headerlink" title="Register"></a>Register</h2><p>call 명령어 다음의 null byte가 포함된 이유는 명령어 피연산자 값이 32 비트로 확장되면서 발생한다.</p>
+<p>64비트, 32비트, 16비트 Register에 값이 저장될 때, 표현 가능한 최대 값보다 작은 값이 저장되어 남는 공간이 null byte로 채워진다. 이런 특성 때문에 Register에 값을 저장할 때 null byte가 발생한다.<br><br></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Assessmbly code          Machine code</span><br><span class="line">mov eax, 0x4             B8 04 00 00 00</span><br><span class="line">mov ax, 0x4              66 B8 04 00</span><br><span class="line">mov al, 0x4              B0 04</span><br></pre></td></tr></table></figure>
+
+<p>이는 xor 명령어를 통해 해결할 수 있다.</p>
+<p>xor 명령어는 두 피연산자 값을 배타적 논리합으로 초기화하여, 결과적으로 항상 0을 만든다.</p>
+<p>이후, bl, cl, dl Register에 값을 저장하여 null byte를 제거할수 있다.<br><br></p>
+<p><strong>RemoveNullbyte.s</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">BITS 32</span><br><span class="line"> </span><br><span class="line">jmp short last</span><br><span class="line">helloworld:</span><br><span class="line"></span><br><span class="line">    pop ecx</span><br><span class="line">    xor eax,eax</span><br><span class="line">    mov al, 4</span><br><span class="line">    xor ebx,ebx</span><br><span class="line">    mov bl, 1</span><br><span class="line">    xor edx,edx</span><br><span class="line">    mov dl, 15</span><br><span class="line">    int 0x80</span><br><span class="line"> </span><br><span class="line">    mov al,1</span><br><span class="line">    xor ebx,ebx</span><br><span class="line">    int 0x80</span><br><span class="line">  </span><br><span class="line">last:</span><br><span class="line">    call helloworld</span><br><span class="line">    db &quot;Hello, world!&quot;, 0x0a, 0x0d</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">bintable@bintable-virtual-machine:~/Desktop/lazenca$ ndisasm RemoveNullbyte</span><br><span class="line">00000000  EB15              jmp short 0x17</span><br><span class="line">00000002  59                pop cx</span><br><span class="line">00000003  31C0              xor ax,ax</span><br><span class="line">00000005  B004              mov al,0x4</span><br><span class="line">00000007  31DB              xor bx,bx</span><br><span class="line">00000009  B301              mov bl,0x1</span><br><span class="line">0000000B  31D2              xor dx,dx</span><br><span class="line">0000000D  B20F              mov dl,0xf</span><br><span class="line">0000000F  CD80              int 0x80</span><br><span class="line">00000011  B001              mov al,0x1</span><br><span class="line">00000013  31DB              xor bx,bx</span><br><span class="line">00000015  CD80              int 0x80</span><br><span class="line">00000017  E8E6FF            call word 0x0</span><br><span class="line">0000001A  FF                db 0xff</span><br><span class="line">0000001B  FF4865            dec word [bx+si+0x65]</span><br><span class="line">0000001E  6C                insb</span><br><span class="line">0000001F  6C                insb</span><br><span class="line">00000020  6F                outsw</span><br><span class="line">00000021  2C20              sub al,0x20</span><br><span class="line">00000023  776F              ja 0x94</span><br><span class="line">00000025  726C              jc 0x93</span><br><span class="line">00000027  64210A            and [fs:bp+si],cx</span><br><span class="line">0000002A  0D                db 0x0d</span><br></pre></td></tr></table></figure>
+
+<p>null byte 가 제거된 shellcode를 아래 코드로 테스트할 수 있다.<br><br></p>
+<p>**shellcode2.c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> shellcode [] = <span class="string">&quot;\xeb\x15\x59\x31\xc0\xb0\x04\x31\xdb\xb3\x01\x31\xd2\xb2\x0f\xcd\x80\xb0\x01\x31\xdb\xcd\x80\xe8\xe6\xff\xff\xffHello, world!\n\r&quot;</span>;</span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> code[] = <span class="string">&quot;&quot;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> len = <span class="built_in">strlen</span>(shellcode);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Shellcode len : %d\n&quot;</span>,len);</span><br><span class="line">    <span class="built_in">strcpy</span>(code,shellcode);</span><br><span class="line">    (*(<span class="type">void</span>(*)()) code)();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bintable@bintable-virtual-machine:~/Desktop/lazenca$ ./shellcode2</span><br><span class="line">Shellcode len : 43</span><br><span class="line">Hello, world!</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Shellcode"><span class="toc-number">1.</span> <span class="toc-text">Shellcode</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-system-call-in-assembly"><span class="toc-number">1.1.</span> <span class="toc-text">Linux system call in assembly</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#32-bit"><span class="toc-number">1.1.1.</span> <span class="toc-text">32 bit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#64-bit"><span class="toc-number">1.1.2.</span> <span class="toc-text">64 bit</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Save-argument-value-in-registers"><span class="toc-number">1.2.</span> <span class="toc-text">Save argument value in registers</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Assembly-Code-Example-32bit"><span class="toc-number">1.2.1.</span> <span class="toc-text">Assembly Code Example(32bit)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Assembly-Code-Example-64bit"><span class="toc-number">1.2.2.</span> <span class="toc-text">Assembly Code Example(64bit)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Change-to-Shellcode-format"><span class="toc-number">1.3.</span> <span class="toc-text">Change to Shellcode format</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shellcode-Test"><span class="toc-number">1.4.</span> <span class="toc-text">Shellcode Test</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Debugging"><span class="toc-number">1.5.</span> <span class="toc-text">Debugging</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Remove-null-byte"><span class="toc-number">1.6.</span> <span class="toc-text">Remove null byte</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Call-instruction"><span class="toc-number">1.7.</span> <span class="toc-text">Call instruction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Register"><span class="toc-number">1.8.</span> <span class="toc-text">Register</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/&text=[Tech] Shellcode"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/&title=[Tech] Shellcode"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/&is_video=false&description=[Tech] Shellcode"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=[Tech] Shellcode&body=Check out this article: https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/&title=[Tech] Shellcode"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/&title=[Tech] Shellcode"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/&title=[Tech] Shellcode"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/&title=[Tech] Shellcode"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/&name=[Tech] Shellcode&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://bintab1e.github.io/2024/12/30/lazenca/Tech-Shellcode/&t=[Tech] Shellcode"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    bintab1e
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Category</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
